@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern C: 余白の美学 | Deen不動産 デザイン案</title>
+  <meta name="description" content="Deen不動産ホームページデザイン案 Pattern C - Editorial Minimal">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Infant:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-c.css">
+</head>
+<body>
+
+  <header class="header">
+    <input type="checkbox" id="hamburger" class="hamburger-toggle">
+    <div class="header__inner">
+      <a href="design-c.html" class="header__logo">
+        <img src="../logo.jpg" alt="Deen不動産">
+      </a>
+      <nav class="header__nav">
+        <ul>
+          <li><a href="#" data-jp="ホーム">HOME</a></li>
+          <li><a href="#" data-jp="借りたい">RENT</a></li>
+          <li><a href="#" data-jp="貸したい">MANAGE</a></li>
+          <li><a href="#" data-jp="買いたい">BUY</a></li>
+          <li><a href="#" data-jp="売りたい">SELL</a></li>
+          <li><a href="#company" data-jp="会社情報">ABOUT</a></li>
+        </ul>
+      </nav>
+      <div class="header__cta">
+        <div class="header__cta-list">
+          <a href="tel:0000000000" class="btn btn--small btn--secondary">Tel</a>
+          <a href="#" class="btn btn--small btn--primary">Line</a>
+          <a href="#" class="btn btn--small btn--primary">Visit</a>
+        </div>
+      </div>
+      <label for="hamburger" class="hamburger-label">
+        <span></span><span></span><span></span>
+      </label>
+    </div>
+    <div class="mobile-menu">
+      <ul class="mobile-menu__nav">
+        <li><a href="#">HOME / ホーム</a></li>
+        <li><a href="#">RENT / 借りたい</a></li>
+        <li><a href="#">MANAGE / 貸したい</a></li>
+        <li><a href="#">BUY / 買いたい</a></li>
+        <li><a href="#">SELL / 売りたい</a></li>
+        <li><a href="#company">ABOUT / 会社情報</a></li>
+      </ul>
+      <div class="mobile-menu__cta">
+        <a href="tel:0000000000" class="btn btn--secondary">電話で問い合わせる</a>
+        <a href="#" class="btn btn--primary">LINEで相談する</a>
+        <a href="#" class="btn btn--primary">来店予約する</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__image placeholder">Okayama in Monochrome</div>
+    <div class="hero__overlay">
+      <p class="hero__catch">OKAYAMA REAL ESTATE</p>
+      <h1 class="hero__title">岡 山 に、<br>住 む。</h1>
+      <p class="hero__sub">賃貸・売買・管理まで、岡山エリアの不動産はおまかせください。余白を大切にした、丁寧な暮らしのご提案を。</p>
+    </div>
+  </section>
+
+  <section class="section--white" id="selection">
+    <div class="container">
+      <h2 class="section-title">お 部 屋 探 し</h2>
+      <p class="section-subtitle">Our Services</p>
+      <div class="selection__grid">
+        <div class="selection__card">
+          <div class="selection__card-image placeholder">Rental</div>
+          <div class="selection__card-body">
+            <h3 class="selection__card-title">借りたい</h3>
+            <p class="selection__card-desc">賃貸物件をお探しの方へ。岡山エリアの物件を豊富にご紹介します。</p>
+            <a href="#" class="btn btn--primary btn--block">View Rental</a>
+          </div>
+        </div>
+        <div class="selection__card">
+          <div class="selection__card-image placeholder">Management</div>
+          <div class="selection__card-body">
+            <h3 class="selection__card-title">貸したい</h3>
+            <p class="selection__card-desc">賃貸管理をお考えのオーナー様。入居率向上をサポートします。</p>
+            <a href="#" class="btn btn--primary btn--block">Consult</a>
+          </div>
+        </div>
+        <div class="selection__card">
+          <div class="selection__card-image placeholder">Purchase</div>
+          <div class="selection__card-body">
+            <h3 class="selection__card-title">買いたい</h3>
+            <p class="selection__card-desc">住宅購入をご検討の方へ。マイホームの夢をサポートします。</p>
+            <a href="#" class="btn btn--primary btn--block">View Homes</a>
+          </div>
+        </div>
+        <div class="selection__card">
+          <div class="selection__card-image placeholder">Sale</div>
+          <div class="selection__card-body">
+            <h3 class="selection__card-title">売りたい</h3>
+            <p class="selection__card-desc">売却・査定をお考えの方へ。適正価格でスムーズな売却を実現します。</p>
+            <a href="#" class="btn btn--primary btn--block">Free Estimate</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--gray" id="search">
+    <div class="container">
+      <h2 class="section-title">物 件 を 探 す</h2>
+      <p class="section-subtitle">Property Search</p>
+      <div class="search__tabs">
+        <span class="search__tab search__tab--active">賃 貸</span>
+        <span class="search__tab search__tab--inactive">売 買</span>
+      </div>
+      <div class="search__grid">
+        <a href="#" class="search__card">
+          <div class="search__card-icon">area</div>
+          <p class="search__card-label">エリアから</p>
+        </a>
+        <a href="#" class="search__card">
+          <div class="search__card-icon">line</div>
+          <p class="search__card-label">沿線・駅から</p>
+        </a>
+        <a href="#" class="search__card">
+          <div class="search__card-icon">rent</div>
+          <p class="search__card-label">家賃から</p>
+        </a>
+        <a href="#" class="search__card">
+          <div class="search__card-icon">more</div>
+          <p class="search__card-label">こだわりから</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--white" id="strengths">
+    <div class="container">
+      <h2 class="section-title">当 社 の 強 み</h2>
+      <p class="section-subtitle">Why Choose Us</p>
+      <div class="strengths__list">
+        <div class="strength-item strength-item--primary">
+          <p class="strength-item__number">01</p>
+          <div class="strength-item__image placeholder">Transparency</div>
+          <div class="strength-item__body">
+            <h3 class="strength-item__title">初期費用の透明化</h3>
+            <p class="strength-item__desc">見積もりの内訳を一つひとつ丁寧にご説明します。「この費用は何？」という疑問を残しません。不明な項目がないか一緒に確認し、納得いただける契約をサポートします。</p>
+          </div>
+        </div>
+        <div class="strength-item">
+          <p class="strength-item__number">02</p>
+          <div class="strength-item__image placeholder">Fee Check</div>
+          <div class="strength-item__body">
+            <h3 class="strength-item__title">不要な費用の確認サポート</h3>
+            <p class="strength-item__desc">本当に必要な費用かどうか、一緒に確認・交渉します。余計なオプションや不要なサービスが含まれていないか、お客様の立場でチェックします。</p>
+          </div>
+        </div>
+        <div class="strength-item">
+          <p class="strength-item__number">03</p>
+          <div class="strength-item__image placeholder">LINE</div>
+          <div class="strength-item__body">
+            <h3 class="strength-item__title">LINEで気軽に相談</h3>
+            <p class="strength-item__desc">テキストで気軽にやり取りできます。営業時間外でもメッセージを送っていただければ、翌営業日にはお返事します。電話が苦手な方も安心です。</p>
+          </div>
+        </div>
+        <div class="strength-item">
+          <p class="strength-item__number">04</p>
+          <div class="strength-item__image placeholder">Local</div>
+          <div class="strength-item__body">
+            <h3 class="strength-item__title">岡山エリア密着</h3>
+            <p class="strength-item__desc">地元を知り尽くしたスタッフが、エリアの特徴や住みやすさも含めてご案内。岡山で暮らすリアルな情報をお伝えします。</p>
+          </div>
+        </div>
+        <div class="strength-item">
+          <p class="strength-item__number">05</p>
+          <div class="strength-item__image placeholder">Online</div>
+          <div class="strength-item__body">
+            <h3 class="strength-item__title">オンライン対応</h3>
+            <p class="strength-item__desc">来店が難しい方もビデオ通話で内見・相談が可能です。遠方からのお引越しや、忙しくて時間が取れない方にも柔軟に対応します。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--gray" id="support">
+    <div class="container">
+      <h2 class="section-title">サ ポ ー ト</h2>
+      <p class="section-subtitle">Support Services</p>
+      <div class="support__grid">
+        <div class="support__card">
+          <div class="support__card-image placeholder">Management</div>
+          <div class="support__card-body">
+            <h3 class="support__card-title">賃貸管理サポート</h3>
+            <p class="support__card-desc">オーナー様の物件管理を入居者募集から退去対応まで一括サポート。</p>
+            <a href="#" class="btn btn--primary btn--block">Consult</a>
+          </div>
+        </div>
+        <div class="support__card">
+          <div class="support__card-image placeholder">Purchase</div>
+          <div class="support__card-body">
+            <h3 class="support__card-title">購入相談サポート</h3>
+            <p class="support__card-desc">資金計画からローン相談まで、マイホーム購入を総合的にサポート。</p>
+            <a href="#" class="btn btn--primary btn--block">Consult</a>
+          </div>
+        </div>
+        <div class="support__card">
+          <div class="support__card-image placeholder">Sale</div>
+          <div class="support__card-body">
+            <h3 class="support__card-title">売却相談サポート</h3>
+            <p class="support__card-desc">適正価格での売却をサポート。無料査定から販売活動まで一貫対応。</p>
+            <a href="#" class="btn btn--primary btn--block">Consult</a>
+          </div>
+        </div>
+        <div class="support__card">
+          <div class="support__card-image placeholder">Online</div>
+          <div class="support__card-body">
+            <h3 class="support__card-title">LINE・オンライン相談</h3>
+            <p class="support__card-desc">来店不要で気軽に相談。LINEやビデオ通話で対応します。</p>
+            <a href="#" class="btn btn--primary btn--block">Via Line</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--white" id="links">
+    <div class="container">
+      <div class="links__grid">
+        <a href="#" class="links__item">
+          <div class="links__icon">st</div>
+          <p class="links__label">スタッフ紹介</p>
+        </a>
+        <a href="#" class="links__item">
+          <div class="links__icon">re</div>
+          <p class="links__label">お客様の声</p>
+        </a>
+        <a href="#" class="links__item">
+          <div class="links__icon">ig</div>
+          <p class="links__label">Instagram</p>
+        </a>
+        <a href="#" class="links__item">
+          <div class="links__icon">bl</div>
+          <p class="links__label">ブログ</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--gray" id="about">
+    <div class="container">
+      <h2 class="section-title">会 社 に つ い て</h2>
+      <p class="section-subtitle">About Deen</p>
+      <div class="about__inner">
+        <div class="about__image placeholder">Store Interior</div>
+        <div class="about__text">
+          <h3>地域密着で、<br>相談しやすい不動産を。</h3>
+          <p>Deen不動産は岡山エリアに特化した不動産会社です。賃貸・売買・管理まで、お客様一人ひとりのご要望に丁寧に向き合います。</p>
+          <p>「初めてのお部屋探しで不安」「初期費用が分かりにくい」そんなお悩みにも、分かりやすくお答えします。LINEでの相談も受け付けていますので、まずはお気軽にご連絡ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="cta">
+    <div class="container">
+      <h2 class="cta__heading">お気軽にご相談ください</h2>
+      <p class="cta__phone">0XX-XXX-XXXX</p>
+      <p class="cta__hours">Open 10:00〜19:00 / Closed Wednesday</p>
+      <div class="cta__buttons">
+        <a href="#" class="btn btn--white">お問合せ</a>
+        <a href="#" class="btn btn--white">LINEで相談する</a>
+        <a href="#" class="btn btn--white">来店予約する</a>
+        <a href="#" class="btn btn--white">オンライン相談する</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--white" id="company">
+    <div class="container">
+      <h2 class="section-title">会 社 概 要</h2>
+      <p class="section-subtitle">Company Profile</p>
+      <table class="company-table">
+        <tr><th>会社名</th><td>Deen不動産</td></tr>
+        <tr><th>所在地</th><td>〒700-0000 岡山県岡山市北区○○ ○-○-○</td></tr>
+        <tr><th>営業時間</th><td>10:00〜19:00</td></tr>
+        <tr><th>定休日</th><td>水曜日</td></tr>
+        <tr><th>電話番号</th><td>0XX-XXX-XXXX</td></tr>
+        <tr><th>LINE</th><td>@deen-fudosan</td></tr>
+        <tr><th>対応エリア</th><td>岡山県全域（ご相談により県外も対応可能です）</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__logo"><img src="../logo.jpg" alt="Deen不動産"></div>
+      <nav class="footer__nav">
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">RENT</a></li>
+          <li><a href="#">MANAGE</a></li>
+          <li><a href="#">BUY</a></li>
+          <li><a href="#">SELL</a></li>
+          <li><a href="#company">ABOUT</a></li>
+          <li><a href="#">CONTACT</a></li>
+          <li><a href="#">PRIVACY</a></li>
+        </ul>
+      </nav>
+      <p class="footer__copy">&copy; 2025 Deen不動産 All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

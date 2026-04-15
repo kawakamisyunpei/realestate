@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deen不動産 - デザイン3案比較</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F7F5;
+  --card-bg: #FFFFFF;
+  --text: #1A1A1A;
+  --text-muted: #6B6B6B;
+  --border: #E5E5E2;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.landing-header {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 24px 40px;
+  text-align: center;
+}
+
+.landing-header__eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.landing-header__title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.landing-intro {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 60px 24px 40px;
+  text-align: center;
+}
+
+.landing-intro h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.landing-intro p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.design-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px 24px 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 960px) {
+  .design-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.design-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.design-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+}
+
+.design-card__preview {
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Pattern A mock preview */
+.preview-a {
+  background: linear-gradient(135deg, #F4F6F9 0%, #FFFFFF 100%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.preview-a__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #DCE1E8;
+}
+.preview-a__logo {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #16365C;
+  letter-spacing: 0.1em;
+}
+.preview-a__nav { display: flex; gap: 10px; }
+.preview-a__nav span {
+  font-size: 8px;
+  color: #1A2B44;
+  letter-spacing: 0.1em;
+}
+.preview-a__hero {
+  flex: 1;
+  margin: 12px 0;
+  background: #16365C;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 14px;
+}
+.preview-a__hero::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 20px;
+  height: 1px;
+  background: #C9A96E;
+}
+.preview-a__hero-text {
+  font-family: 'Noto Serif JP', serif;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.preview-a__hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 9px;
+  color: #C9A96E;
+  letter-spacing: 0.2em;
+  display: block;
+  margin-bottom: 6px;
+}
+.preview-a__cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.preview-a__cards div {
+  aspect-ratio: 1;
+  background: #fff;
+  border: 1px solid #DCE1E8;
+  border-radius: 2px;
+}
+
+/* Pattern B mock preview */
+.preview-b {
+  background: #FDFCF9;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.preview-b__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.preview-b__logo {
+  font-family: 'Zen Old Mincho', 'Noto Serif JP', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3D5A3D;
+}
+.preview-b__nav { display: flex; gap: 10px; }
+.preview-b__nav span {
+  font-size: 8px;
+  color: #2B2E26;
+}
+.preview-b__hero {
+  flex: 1;
+  margin: 12px 0;
+  background: linear-gradient(180deg, #E3DFD4 0%, #F1EEE6 100%);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+}
+.preview-b__hero-card {
+  background: #FDFCF9;
+  padding: 10px 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  max-width: 70%;
+}
+.preview-b__hero-text {
+  font-family: 'Zen Old Mincho', 'Noto Serif JP', serif;
+  font-size: 13px;
+  color: #2B2E26;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.preview-b__hero-btn {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 10px;
+  background: #C76F3C;
+  color: #fff;
+  font-size: 8px;
+  border-radius: 20px;
+}
+.preview-b__cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.preview-b__cards div {
+  aspect-ratio: 1;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+/* Pattern C mock preview */
+.preview-c {
+  background: #FFFFFF;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.preview-c__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #111;
+}
+.preview-c__logo {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: #111;
+}
+.preview-c__nav { display: flex; gap: 12px; }
+.preview-c__nav span {
+  font-family: 'Cormorant Infant', serif;
+  font-size: 9px;
+  color: #111;
+  letter-spacing: 0.1em;
+  font-style: italic;
+}
+.preview-c__hero {
+  flex: 1;
+  margin: 14px 0;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 12px;
+}
+.preview-c__hero-img {
+  background: linear-gradient(135deg, #888 0%, #ccc 100%);
+  filter: grayscale(1);
+}
+.preview-c__hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.preview-c__hero-num {
+  font-family: 'Cormorant Infant', serif;
+  font-size: 10px;
+  color: #B8793D;
+  letter-spacing: 0.2em;
+  font-style: italic;
+}
+.preview-c__hero-h {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #111;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  margin-top: 6px;
+}
+.preview-c__cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.preview-c__cards div {
+  aspect-ratio: 1;
+  background: #F7F7F5;
+  border-radius: 0;
+}
+
+.design-card__body {
+  padding: 28px 24px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.design-card__eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.design-card__title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+}
+
+.design-card__subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.design-card__desc {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.design-card__features {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.design-card__features li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+
+.design-card__features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 10px;
+  height: 1px;
+  background: var(--text-muted);
+}
+
+.design-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.design-card__tags span {
+  font-size: 10px;
+  padding: 4px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.design-card__cta {
+  display: block;
+  margin-top: auto;
+  text-align: center;
+  padding: 14px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  transition: opacity 0.2s;
+}
+
+.design-card__cta:hover { opacity: 0.85; }
+
+.design-card--a .design-card__cta { background: #16365C; }
+.design-card--b .design-card__cta { background: #3D5A3D; }
+.design-card--c .design-card__cta { background: #111111; }
+
+.design-card--a .design-card__eyebrow { color: #C9A96E; }
+.design-card--b .design-card__eyebrow { color: #C76F3C; }
+.design-card--c .design-card__eyebrow { color: #B8793D; }
+
+.comparison-table {
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  padding: 0 24px;
+}
+
+.comparison-table h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.comparison-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.comparison-table th:last-child,
+.comparison-table td:last-child { border-right: none; }
+
+.comparison-table tr:last-child td { border-bottom: none; }
+
+.comparison-table th {
+  background: var(--bg);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+.comparison-table td:first-child {
+  font-weight: 600;
+  background: #FAFAF9;
+  width: 120px;
+}
+
+.landing-footer {
+  background: #1A1A1A;
+  color: #9A9A9A;
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+</style>
+</head>
+<body>
+
+<header class="landing-header">
+  <div class="landing-header__eyebrow">DEEN REAL ESTATE — DESIGN PROPOSAL</div>
+  <h1 class="landing-header__title">デザイン3案 比較プレビュー</h1>
+</header>
+
+<section class="landing-intro">
+  <h2>ご要望に基づき、3パターンのデザイン案をご用意しました</h2>
+  <p>「白基調にグレー」「AIっぽさを排除」「不動産会社らしい信頼感」「オシャレな見た目」の4要件に対して、<br>それぞれ異なるアプローチで方向性を提案します。各案をご覧いただき、方向性をお選びください。</p>
+</section>
+
+<div class="design-grid">
+
+  <!-- Pattern A -->
+  <article class="design-card design-card--a">
+    <div class="design-card__preview preview-a">
+      <div class="preview-a__header">
+        <div class="preview-a__logo">Deen不動産</div>
+        <div class="preview-a__nav"><span>借りる</span><span>買う</span><span>売る</span></div>
+      </div>
+      <div class="preview-a__hero">
+        <div>
+          <span class="preview-a__hero-sub">OUR MISSION</span>
+          <div class="preview-a__hero-text">岡山で、次の住まいを</div>
+        </div>
+      </div>
+      <div class="preview-a__cards"><div></div><div></div><div></div><div></div></div>
+    </div>
+    <div class="design-card__body">
+      <div class="design-card__eyebrow">PATTERN A</div>
+      <h3 class="design-card__title">信頼の紺</h3>
+      <p class="design-card__subtitle">Corporate Navy — 王道・大手感・安心</p>
+      <p class="design-card__desc">三井のリハウス系の安心感ある王道デザイン。ディープネイビーにゴールドの極細アクセントで、法人的な信頼感を演出します。</p>
+      <ul class="design-card__features">
+        <li>明朝体の見出し＋英字セリフのエイブロー</li>
+        <li>2px角丸のシャープなカード</li>
+        <li>ゴールドのヘアラインディバイダー</li>
+        <li>ネイビーCTAにダイアゴナルテクスチャ</li>
+      </ul>
+      <div class="design-card__tags">
+        <span>#安心</span><span>#王道</span><span>#法人感</span><span>#30-50代</span>
+      </div>
+      <a href="design-a.html" class="design-card__cta">このデザインを見る →</a>
+    </div>
+  </article>
+
+  <!-- Pattern B -->
+  <article class="design-card design-card--b">
+    <div class="design-card__preview preview-b">
+      <div class="preview-b__header">
+        <div class="preview-b__logo">Deen不動産</div>
+        <div class="preview-b__nav"><span>借りる</span><span>買う</span><span>売る</span></div>
+      </div>
+      <div class="preview-b__hero">
+        <div class="preview-b__hero-card">
+          <div class="preview-b__hero-text">岡山の、街と暮らしに寄り添う</div>
+          <div class="preview-b__hero-btn">LINEで相談</div>
+        </div>
+      </div>
+      <div class="preview-b__cards"><div></div><div></div><div></div><div></div></div>
+    </div>
+    <div class="design-card__body">
+      <div class="design-card__eyebrow">PATTERN B</div>
+      <h3 class="design-card__title">岡山の空と木</h3>
+      <p class="design-card__subtitle">Warm Local Green — 地域密着・温かみ</p>
+      <p class="design-card__desc">prosper-home系の温かみある地域密着デザイン。写真主役のヒーローとフォレストグリーン＋テラコッタで、親しみやすさを表現。</p>
+      <ul class="design-card__features">
+        <li>写真優先の左下カード配置ヒーロー</li>
+        <li>温かい紙の質感のオフ白背景</li>
+        <li>画像主役のボーダーレスカード</li>
+        <li>「印」スタンプ風の丸装飾</li>
+      </ul>
+      <div class="design-card__tags">
+        <span>#地域密着</span><span>#温かい</span><span>#親近感</span><span>#20-40代</span>
+      </div>
+      <a href="design-b.html" class="design-card__cta">このデザインを見る →</a>
+    </div>
+  </article>
+
+  <!-- Pattern C -->
+  <article class="design-card design-card--c">
+    <div class="design-card__preview preview-c">
+      <div class="preview-c__header">
+        <div class="preview-c__logo">Deen 不動産</div>
+        <div class="preview-c__nav"><span>Rent</span><span>Buy</span><span>Sell</span></div>
+      </div>
+      <div class="preview-c__hero">
+        <div class="preview-c__hero-img"></div>
+        <div class="preview-c__hero-text">
+          <div class="preview-c__hero-num">01 / Intro</div>
+          <div class="preview-c__hero-h">住まいを、<br>編集する。</div>
+        </div>
+      </div>
+      <div class="preview-c__cards"><div></div><div></div><div></div><div></div></div>
+    </div>
+    <div class="design-card__body">
+      <div class="design-card__eyebrow">PATTERN C</div>
+      <h3 class="design-card__title">余白の美学</h3>
+      <p class="design-card__subtitle">Editorial Minimal — 洗練・差別化</p>
+      <p class="design-card__desc">建築ジャーナル・無印良品系の洗練された余白デザイン。英日バイリンガル表記とモノクロ基調で、他社と明確に差別化します。</p>
+      <ul class="design-card__features">
+        <li>左右非対称60/40ヒーロー</li>
+        <li>英日バイリンガルナビゲーション</li>
+        <li>角丸0・影なし・枠最小</li>
+        <li>特大アウトライン明朝体の番号</li>
+      </ul>
+      <div class="design-card__tags">
+        <span>#洗練</span><span>#差別化</span><span>#エディトリアル</span><span>#デザイン感度高</span>
+      </div>
+      <a href="design-c.html" class="design-card__cta">このデザインを見る →</a>
+    </div>
+  </article>
+
+</div>
+
+<section class="comparison-table">
+  <h3>3案比較表</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>観点</th>
+        <th>A: 信頼の紺</th>
+        <th>B: 岡山の空と木</th>
+        <th>C: 余白の美学</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>雰囲気</td>
+        <td>大手の安心感</td>
+        <td>街の不動産屋（洗練版）</td>
+        <td>建築ジャーナル</td>
+      </tr>
+      <tr>
+        <td>メインカラー</td>
+        <td>ディープネイビー＋ゴールド</td>
+        <td>フォレストグリーン＋テラコッタ</td>
+        <td>モノクロ＋極少オーカー</td>
+      </tr>
+      <tr>
+        <td>フォント</td>
+        <td>Noto Serif JP / Cormorant</td>
+        <td>Zen Old Mincho / DM Serif</td>
+        <td>Shippori Mincho / Cormorant Infant</td>
+      </tr>
+      <tr>
+        <td>写真の扱い</td>
+        <td>自然色</td>
+        <td>温色寄り</td>
+        <td>モノクロ基調</td>
+      </tr>
+      <tr>
+        <td>カード</td>
+        <td>シャープ2px角丸</td>
+        <td>温かみ6px＋下影</td>
+        <td>角丸0・枠なし</td>
+      </tr>
+      <tr>
+        <td>リスク</td>
+        <td>安全・定番</td>
+        <td>親近感・バランス型</td>
+        <td>大胆・差別化</td>
+      </tr>
+      <tr>
+        <td>推奨ターゲット</td>
+        <td>30-50代ファミリー・購入層</td>
+        <td>20-40代・初めての賃貸</td>
+        <td>デザイン感度の高い層</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<footer class="landing-footer">
+  © 2026 Deen不動産 — Design Proposal Preview
+</footer>
+
+</body>
+</html>

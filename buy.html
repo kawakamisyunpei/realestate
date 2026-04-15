@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>買いたい（購入物件を探す） | Deen不動産</title>
+  <meta name="description" content="岡山エリアで住宅購入をご検討の方へ。Deen不動産が資金計画からローン相談まで、マイホーム購入を総合サポートします。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <input type="checkbox" id="hamburger" class="hamburger-toggle">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <img src="logo.jpg" alt="Deen不動産">
+      </a>
+      <nav class="header__nav">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="rent.html">借りたい</a></li>
+          <li><a href="#">貸したい</a></li>
+          <li><a href="buy.html">買いたい</a></li>
+          <li><a href="sell.html">売りたい</a></li>
+          <li><a href="index.html#company">会社情報</a></li>
+        </ul>
+      </nav>
+      <div class="header__cta">
+        <div class="header__cta-list">
+          <a href="tel:0000000000" class="btn btn--small btn--secondary">TEL</a>
+          <a href="#" class="btn btn--small btn--primary">LINE相談</a>
+          <a href="contact.html" class="btn btn--small btn--primary">来店予約</a>
+        </div>
+      </div>
+      <label for="hamburger" class="hamburger-label">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+    <div class="mobile-menu">
+      <ul class="mobile-menu__nav">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="rent.html">借りたい</a></li>
+        <li><a href="#">貸したい</a></li>
+        <li><a href="buy.html">買いたい</a></li>
+        <li><a href="sell.html">売りたい</a></li>
+        <li><a href="index.html#company">会社情報</a></li>
+      </ul>
+      <div class="mobile-menu__cta">
+        <a href="tel:0000000000" class="btn btn--secondary">電話で問い合わせる</a>
+        <a href="#" class="btn btn--primary">LINEで相談する</a>
+        <a href="contact.html" class="btn btn--primary">来店予約する</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== PAGE HEADER ========== -->
+  <div class="page-header">
+    <h1 class="page-header__title" data-en="Buy">購入物件を探す</h1>
+    <p class="page-header__breadcrumb"><a href="index.html">HOME</a> &gt; 買いたい</p>
+  </div>
+
+  <!-- ========== SEARCH FORM ========== -->
+  <section class="section--white">
+    <div class="container">
+      <h2 class="section-title" data-en="Search Filter">条件を絞り込む</h2>
+      <div class="search-form">
+        <div class="search-form__row">
+          <div class="search-form__group">
+            <label>エリア</label>
+            <select>
+              <option>岡山市北区</option>
+              <option>岡山市中区</option>
+              <option>岡山市南区</option>
+              <option>岡山市東区</option>
+              <option>倉敷市</option>
+              <option>津山市</option>
+              <option>その他</option>
+            </select>
+          </div>
+          <div class="search-form__group">
+            <label>価格帯</label>
+            <select>
+              <option>指定なし</option>
+              <option>〜1,000万円</option>
+              <option>1,000万〜2,000万円</option>
+              <option>2,000万〜3,000万円</option>
+              <option>3,000万〜4,000万円</option>
+              <option>4,000万円〜</option>
+            </select>
+          </div>
+          <div class="search-form__group">
+            <label>間取り</label>
+            <select>
+              <option>指定なし</option>
+              <option>1LDK〜2LDK</option>
+              <option>3LDK</option>
+              <option>4LDK</option>
+              <option>5LDK以上</option>
+            </select>
+          </div>
+        </div>
+        <div class="search-form__row">
+          <div class="search-form__group">
+            <label>物件種別</label>
+            <select>
+              <option>指定なし</option>
+              <option>新築一戸建て</option>
+              <option>中古一戸建て</option>
+              <option>新築マンション</option>
+              <option>中古マンション</option>
+              <option>土地</option>
+            </select>
+          </div>
+        </div>
+        <div class="search-form__actions">
+          <button class="btn btn--primary" style="padding: 12px 48px;">物件を探す</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROPERTY LIST ========== -->
+  <section class="section--gray">
+    <div class="container">
+      <h2 class="section-title" data-en="Properties">物件一覧</h2>
+      <p class="section-subtitle">岡山エリアの購入物件</p>
+
+      <div class="property-grid">
+        <!-- Property 1 -->
+        <div class="property-card">
+          <div class="property-card__image placeholder" style="height:180px;">物件写真</div>
+          <div class="property-card__body">
+            <h3 class="property-card__name">新築一戸建て 岡山市北区○○</h3>
+            <p class="property-card__info">
+              岡山市北区○○町 / JR岡山駅 車12分<br>
+              4LDK / 建物面積 105.2m² / 土地面積 180.5m²
+            </p>
+            <p class="property-card__price">2,980万円</p>
+          </div>
+        </div>
+        <!-- Property 2 -->
+        <div class="property-card">
+          <div class="property-card__image placeholder" style="height:180px;">物件写真</div>
+          <div class="property-card__body">
+            <h3 class="property-card__name">中古マンション グランシティ岡山</h3>
+            <p class="property-card__info">
+              岡山市北区△△ / JR岡山駅 徒歩8分<br>
+              3LDK / 72.5m² / 築10年 / 8階
+            </p>
+            <p class="property-card__price">2,480万円</p>
+          </div>
+        </div>
+        <!-- Property 3 -->
+        <div class="property-card">
+          <div class="property-card__image placeholder" style="height:180px;">物件写真</div>
+          <div class="property-card__body">
+            <h3 class="property-card__name">中古一戸建て 倉敷市□□</h3>
+            <p class="property-card__info">
+              倉敷市□□ / JR倉敷駅 車10分<br>
+              4LDK / 建物面積 98.0m² / 土地面積 200.0m²
+            </p>
+            <p class="property-card__price">1,880万円</p>
+          </div>
+        </div>
+        <!-- Property 4 -->
+        <div class="property-card">
+          <div class="property-card__image placeholder" style="height:180px;">物件写真</div>
+          <div class="property-card__body">
+            <h3 class="property-card__name">新築一戸建て 岡山市南区◇◇</h3>
+            <p class="property-card__info">
+              岡山市南区◇◇ / JR妹尾駅 徒歩15分<br>
+              3LDK / 建物面積 92.0m² / 土地面積 150.0m²
+            </p>
+            <p class="property-card__price">3,280万円</p>
+          </div>
+        </div>
+        <!-- Property 5 -->
+        <div class="property-card">
+          <div class="property-card__image placeholder" style="height:180px;">物件写真</div>
+          <div class="property-card__body">
+            <h3 class="property-card__name">土地 岡山市東区◎◎</h3>
+            <p class="property-card__info">
+              岡山市東区◎◎ / JR上道駅 徒歩20分<br>
+              土地面積 220.0m² / 建ぺい率60% / 容積率200%
+            </p>
+            <p class="property-card__price">1,200万円</p>
+          </div>
+        </div>
+        <!-- Property 6 -->
+        <div class="property-card">
+          <div class="property-card__image placeholder" style="height:180px;">物件写真</div>
+          <div class="property-card__body">
+            <h3 class="property-card__name">新築マンション パークヒルズ岡山</h3>
+            <p class="property-card__info">
+              岡山市北区○○ / JR岡山駅 徒歩5分<br>
+              2LDK / 65.0m² / 新築 / 12階
+            </p>
+            <p class="property-card__price">3,580万円</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <span class="pagination__item pagination__item--active">1</span>
+        <a href="#" class="pagination__item">2</a>
+        <a href="#" class="pagination__item">3</a>
+        <a href="#" class="pagination__item">…</a>
+        <a href="#" class="pagination__item">8</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta__heading">住宅購入のご相談はお気軽に</h2>
+      <p class="cta__phone">0XX-XXX-XXXX</p>
+      <p class="cta__hours">営業時間 10:00〜19:00（水曜定休）</p>
+      <div class="cta__buttons">
+        <a href="#" class="btn btn--white">LINEで相談する</a>
+        <a href="contact.html" class="btn btn--white">購入の相談をする</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__logo">
+        <img src="logo.jpg" alt="Deen不動産">
+      </div>
+      <nav class="footer__nav">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="rent.html">借りたい</a></li>
+          <li><a href="#">貸したい</a></li>
+          <li><a href="buy.html">買いたい</a></li>
+          <li><a href="sell.html">売りたい</a></li>
+          <li><a href="index.html#company">会社情報</a></li>
+          <li><a href="contact.html">お問合せ</a></li>
+          <li><a href="#">プライバシーポリシー</a></li>
+        </ul>
+      </nav>
+      <p class="footer__copy">&copy; 2025 Deen不動産 All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

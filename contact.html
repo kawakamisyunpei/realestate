@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ | Deen不動産</title>
+  <meta name="description" content="Deen不動産へのお問い合わせ・ご相談・来店予約はこちら。電話・LINE・フォームからお気軽にご連絡ください。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <input type="checkbox" id="hamburger" class="hamburger-toggle">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <img src="logo.jpg" alt="Deen不動産">
+      </a>
+      <nav class="header__nav">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="rent.html">借りたい</a></li>
+          <li><a href="#">貸したい</a></li>
+          <li><a href="buy.html">買いたい</a></li>
+          <li><a href="sell.html">売りたい</a></li>
+          <li><a href="index.html#company">会社情報</a></li>
+        </ul>
+      </nav>
+      <div class="header__cta">
+        <div class="header__cta-list">
+          <a href="tel:0000000000" class="btn btn--small btn--secondary">TEL</a>
+          <a href="#" class="btn btn--small btn--primary">LINE相談</a>
+          <a href="contact.html" class="btn btn--small btn--primary">来店予約</a>
+        </div>
+      </div>
+      <label for="hamburger" class="hamburger-label">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+    <div class="mobile-menu">
+      <ul class="mobile-menu__nav">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="rent.html">借りたい</a></li>
+        <li><a href="#">貸したい</a></li>
+        <li><a href="buy.html">買いたい</a></li>
+        <li><a href="sell.html">売りたい</a></li>
+        <li><a href="index.html#company">会社情報</a></li>
+      </ul>
+      <div class="mobile-menu__cta">
+        <a href="tel:0000000000" class="btn btn--secondary">電話で問い合わせる</a>
+        <a href="#" class="btn btn--primary">LINEで相談する</a>
+        <a href="contact.html" class="btn btn--primary">来店予約する</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== PAGE HEADER ========== -->
+  <div class="page-header">
+    <h1 class="page-header__title" data-en="Contact">お問い合わせ</h1>
+    <p class="page-header__breadcrumb"><a href="index.html">HOME</a> &gt; お問い合わせ</p>
+  </div>
+
+  <!-- ========== ALTERNATIVE CONTACT ========== -->
+  <section class="section--white">
+    <div class="container">
+      <h2 class="section-title" data-en="Other Ways">お気軽にご連絡ください</h2>
+      <p class="section-subtitle">フォーム以外にも、お電話やLINEでもご相談いただけます</p>
+      <div class="alt-contact">
+        <div class="alt-contact__item">
+          <div class="alt-contact__icon">TEL</div>
+          <div class="alt-contact__text">
+            <p class="alt-contact__label">電話で問い合わせる</p>
+            <p class="alt-contact__detail">0XX-XXX-XXXX（営業時間 10:00〜19:00 / 水曜定休）</p>
+          </div>
+        </div>
+        <div class="alt-contact__item">
+          <div class="alt-contact__icon">LINE</div>
+          <div class="alt-contact__text">
+            <p class="alt-contact__label">LINEで相談する</p>
+            <p class="alt-contact__detail">@deen-fudosan を友だち追加してメッセージをお送りください</p>
+          </div>
+        </div>
+        <div class="alt-contact__item">
+          <div class="alt-contact__icon">店舗</div>
+          <div class="alt-contact__text">
+            <p class="alt-contact__label">来店予約する</p>
+            <p class="alt-contact__detail">下記フォームの「お問い合わせ種別」から「来店予約」をお選びください</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT FORM ========== -->
+  <section class="section--gray">
+    <div class="container">
+      <h2 class="section-title" data-en="Inquiry Form">フォームからお問い合わせ</h2>
+      <div class="contact-form">
+        <div class="contact-form__group">
+          <label>お名前 <span class="required">必須</span></label>
+          <input type="text" placeholder="例: 山田 太郎">
+        </div>
+        <div class="contact-form__group">
+          <label>メールアドレス <span class="required">必須</span></label>
+          <input type="email" placeholder="例: example@mail.com">
+        </div>
+        <div class="contact-form__group">
+          <label>電話番号</label>
+          <input type="tel" placeholder="例: 090-1234-5678">
+        </div>
+        <div class="contact-form__group">
+          <label>お問い合わせ種別 <span class="required">必須</span></label>
+          <select>
+            <option>選択してください</option>
+            <option>賃貸物件について</option>
+            <option>購入物件について</option>
+            <option>売却・査定について</option>
+            <option>賃貸管理について</option>
+            <option>来店予約</option>
+            <option>オンライン相談</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="contact-form__group">
+          <label>ご希望の連絡方法</label>
+          <select>
+            <option>メール</option>
+            <option>電話</option>
+            <option>LINE</option>
+          </select>
+        </div>
+        <div class="contact-form__group">
+          <label>お問い合わせ内容 <span class="required">必須</span></label>
+          <textarea placeholder="ご質問やご希望の条件など、お気軽にご記入ください"></textarea>
+        </div>
+        <div class="contact-form__actions">
+          <button class="btn btn--primary" style="padding: 14px 48px;">送信する</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MAP ========== -->
+  <section class="section--white">
+    <div class="container">
+      <h2 class="section-title" data-en="Access">アクセス</h2>
+      <p class="section-subtitle">〒700-0000 岡山県岡山市北区○○ ○-○-○</p>
+      <div class="map-placeholder">Google Map（実装時に埋め込み）</div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__logo">
+        <img src="logo.jpg" alt="Deen不動産">
+      </div>
+      <nav class="footer__nav">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="rent.html">借りたい</a></li>
+          <li><a href="#">貸したい</a></li>
+          <li><a href="buy.html">買いたい</a></li>
+          <li><a href="sell.html">売りたい</a></li>
+          <li><a href="index.html#company">会社情報</a></li>
+          <li><a href="contact.html">お問合せ</a></li>
+          <li><a href="#">プライバシーポリシー</a></li>
+        </ul>
+      </nav>
+      <p class="footer__copy">&copy; 2025 Deen不動産 All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
