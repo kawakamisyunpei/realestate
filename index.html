@@ -19,54 +19,52 @@
       <a href="index.html" class="header__logo">
         <img src="logo.jpg" alt="Deen不動産">
       </a>
-      <nav class="header__nav">
-        <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="rent.html">借りたい</a></li>
-          <li><a href="#">貸したい</a></li>
-          <li><a href="buy.html">買いたい</a></li>
-          <li><a href="sell.html">売りたい</a></li>
-          <li><a href="#company">会社情報</a></li>
-        </ul>
-      </nav>
-      <div class="header__cta">
-        <div class="header__cta-list">
-          <a href="tel:0000000000" class="btn btn--small btn--secondary">TEL</a>
-          <a href="#" class="btn btn--small btn--primary">LINE相談</a>
-          <a href="contact.html" class="btn btn--small btn--primary">来店予約</a>
-        </div>
-      </div>
-      <label for="hamburger" class="hamburger-label">
+      <label for="hamburger" class="hamburger-label" aria-label="メニュー">
         <span></span>
         <span></span>
         <span></span>
       </label>
     </div>
-    <!-- Mobile menu -->
+    <!-- Click-outside-to-close backdrop -->
+    <label for="hamburger" class="menu-backdrop" aria-hidden="true"></label>
+    <!-- Right-side drawer menu -->
     <div class="mobile-menu">
-      <ul class="mobile-menu__nav">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="rent.html">借りたい</a></li>
-        <li><a href="#">貸したい</a></li>
-        <li><a href="buy.html">買いたい</a></li>
-        <li><a href="sell.html">売りたい</a></li>
-        <li><a href="#company">会社情報</a></li>
-      </ul>
-      <div class="mobile-menu__cta">
-        <a href="tel:0000000000" class="btn btn--secondary">電話で問い合わせる</a>
-        <a href="#" class="btn btn--primary">LINEで相談する</a>
-        <a href="contact.html" class="btn btn--primary">来店予約する</a>
+      <div class="mobile-menu__inner">
+        <div class="mobile-menu__section">
+          <p class="mobile-menu__heading">Menu</p>
+          <ul class="mobile-menu__nav">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="buy.html">買いたい</a></li>
+            <li><a href="sell.html">売りたい</a></li>
+            <li><a href="index.html#company">会社情報</a></li>
+            <li><a href="contact.html">お問い合わせ</a></li>
+          </ul>
+        </div>
+        <div class="mobile-menu__section">
+          <p class="mobile-menu__heading">Contact</p>
+          <p class="mobile-menu__tel">0XX-XXX-XXXX</p>
+          <p class="mobile-menu__hours">営業時間 10:00〜19:00 / 水曜定休</p>
+          <div class="mobile-menu__cta">
+            <a href="#" class="btn btn--primary">LINEで相談する</a>
+            <a href="contact.html" class="btn btn--white">来店予約する</a>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- ========== HERO / FIRST VIEW ========== -->
   <section class="hero">
-    <div class="hero__image placeholder">メインビジュアル（岡山の街並み / 店舗写真）</div>
+    <div class="hero__slides">
+      <div class="hero__slide" style="background-image: url('images/hero/hero-01.png');"></div>
+      <div class="hero__slide" style="background-image: url('images/hero/hero-02.png');"></div>
+      <div class="hero__slide" style="background-image: url('images/hero/hero-03.png');"></div>
+    </div>
+    <div class="hero__mask"></div>
     <div class="hero__overlay">
       <p class="hero__catch">岡山でお部屋探しなら</p>
       <h1 class="hero__title">Deen不動産</h1>
-      <p class="hero__sub">賃貸・売買・管理まで、岡山エリアの不動産はおまかせください</p>
+      <p class="hero__sub">岡山エリアの不動産はおまかせください</p>
     </div>
   </section>
 
@@ -75,8 +73,8 @@
     <div class="container">
       <h2 class="section-title" data-en="Our Service">お部屋探し・不動産のご相談</h2>
       <p class="section-subtitle">あなたの目的に合わせてお選びください</p>
-      <div class="selection__grid">
-        <!-- 借りたい -->
+      <div class="selection__grid selection__grid--2col">
+        <!-- 借りたい（非表示）
         <div class="selection__card">
           <div class="selection__card-image placeholder">賃貸イメージ</div>
           <div class="selection__card-body">
@@ -85,7 +83,8 @@
             <a href="rent.html" class="btn btn--primary btn--block">物件を探す</a>
           </div>
         </div>
-        <!-- 貸したい -->
+        -->
+        <!-- 貸したい（非表示）
         <div class="selection__card">
           <div class="selection__card-image placeholder">管理イメージ</div>
           <div class="selection__card-body">
@@ -94,9 +93,10 @@
             <a href="#" class="btn btn--primary btn--block">管理について相談する</a>
           </div>
         </div>
+        -->
         <!-- 買いたい -->
         <div class="selection__card">
-          <div class="selection__card-image placeholder">購入イメージ</div>
+          <div class="selection__card-image" style="background-image: url('images/hero/hero-04.png');"></div>
           <div class="selection__card-body">
             <h3 class="selection__card-title">買いたい</h3>
             <p class="selection__card-desc">住宅購入をご検討の方へ。マイホームの夢をサポートします。</p>
@@ -105,7 +105,7 @@
         </div>
         <!-- 売りたい -->
         <div class="selection__card">
-          <div class="selection__card-image placeholder">売却イメージ</div>
+          <div class="selection__card-image" style="background-image: url('images/hero/hero-05.png');"></div>
           <div class="selection__card-body">
             <h3 class="selection__card-title">売りたい</h3>
             <p class="selection__card-desc">売却・査定をお考えの方へ。適正価格でスムーズな売却を実現します。</p>
@@ -116,12 +116,11 @@
     </div>
   </section>
 
-  <!-- ========== PROPERTY SEARCH ========== -->
+  <!-- ========== PROPERTY SEARCH（非表示）==========
   <section class="section--white" id="search">
     <div class="container">
       <h2 class="section-title" data-en="Property Search">物件を探す</h2>
       <p class="section-subtitle">条件を選んで、あなたにぴったりの物件を見つけましょう</p>
-      <!-- Tabs (static: 賃貸 active) -->
       <div class="search__tabs">
         <span class="search__tab search__tab--active">賃貸</span>
         <span class="search__tab search__tab--inactive">売買</span>
@@ -146,6 +145,7 @@
       </div>
     </div>
   </section>
+  -->
 
   <!-- ========== STRENGTHS ========== -->
   <section class="section--gray" id="strengths">
@@ -155,7 +155,7 @@
       <div class="strengths__list">
         <!-- 1: Primary -->
         <div class="strength-item strength-item--primary">
-          <div class="strength-item__image placeholder">初期費用イメージ</div>
+          <div class="strength-item__image" style="background-image: url('images/hero/hero-06.png');"></div>
           <div class="strength-item__body">
             <p class="strength-item__number">POINT 01</p>
             <h3 class="strength-item__title">初期費用の透明化</h3>
@@ -164,7 +164,7 @@
         </div>
         <!-- 2 -->
         <div class="strength-item">
-          <div class="strength-item__image placeholder">費用確認イメージ</div>
+          <div class="strength-item__image" style="background-image: url('images/hero/hero-07.png');"></div>
           <div class="strength-item__body">
             <p class="strength-item__number">POINT 02</p>
             <h3 class="strength-item__title">不要な費用の確認サポート</h3>
@@ -173,7 +173,7 @@
         </div>
         <!-- 3 -->
         <div class="strength-item">
-          <div class="strength-item__image placeholder">LINEイメージ</div>
+          <div class="strength-item__image" style="background-image: url('images/hero/hero-08.png');"></div>
           <div class="strength-item__body">
             <p class="strength-item__number">POINT 03</p>
             <h3 class="strength-item__title">LINEで気軽に相談</h3>
@@ -182,7 +182,7 @@
         </div>
         <!-- 4 -->
         <div class="strength-item">
-          <div class="strength-item__image placeholder">岡山イメージ</div>
+          <div class="strength-item__image" style="background-image: url('images/hero/hero-09.png');"></div>
           <div class="strength-item__body">
             <p class="strength-item__number">POINT 04</p>
             <h3 class="strength-item__title">岡山エリア密着</h3>
@@ -191,7 +191,7 @@
         </div>
         <!-- 5 -->
         <div class="strength-item">
-          <div class="strength-item__image placeholder">オンラインイメージ</div>
+          <div class="strength-item__image" style="background-image: url('images/hero/hero-10.png');"></div>
           <div class="strength-item__body">
             <p class="strength-item__number">POINT 05</p>
             <h3 class="strength-item__title">オンライン対応</h3>
@@ -209,15 +209,7 @@
       <p class="section-subtitle">お客様のニーズに合わせたサポートをご用意しています</p>
       <div class="support__grid">
         <div class="support__card">
-          <div class="support__card-image placeholder">賃貸管理イメージ</div>
-          <div class="support__card-body">
-            <h3 class="support__card-title">賃貸管理サポート</h3>
-            <p class="support__card-desc">オーナー様の物件管理を入居者募集から退去対応まで一括サポート。</p>
-            <a href="#" class="btn btn--primary btn--block">管理について相談する</a>
-          </div>
-        </div>
-        <div class="support__card">
-          <div class="support__card-image placeholder">購入相談イメージ</div>
+          <div class="support__card-image" style="background-image: url('images/hero/hero-11.png');"></div>
           <div class="support__card-body">
             <h3 class="support__card-title">購入相談サポート</h3>
             <p class="support__card-desc">資金計画からローン相談まで、マイホーム購入を総合的にサポート。</p>
@@ -225,7 +217,15 @@
           </div>
         </div>
         <div class="support__card">
-          <div class="support__card-image placeholder">売却相談イメージ</div>
+          <div class="support__card-image" style="background-image: url('images/hero/hero-12.png');"></div>
+          <div class="support__card-body">
+            <h3 class="support__card-title">土地探しサポート</h3>
+            <p class="support__card-desc">岡山エリアで土地をお探しの方へ。ご希望の条件に合った土地情報をご提案します。</p>
+            <a href="#" class="btn btn--primary btn--block">土地について相談する</a>
+          </div>
+        </div>
+        <div class="support__card">
+          <div class="support__card-image" style="background-image: url('images/hero/hero-13.png');"></div>
           <div class="support__card-body">
             <h3 class="support__card-title">売却相談サポート</h3>
             <p class="support__card-desc">適正価格での売却をサポート。無料査定から販売活動まで一貫対応。</p>
@@ -233,7 +233,7 @@
           </div>
         </div>
         <div class="support__card">
-          <div class="support__card-image placeholder">オンライン相談イメージ</div>
+          <div class="support__card-image" style="background-image: url('images/hero/hero-14.png');"></div>
           <div class="support__card-body">
             <h3 class="support__card-title">LINE・オンライン相談</h3>
             <p class="support__card-desc">来店不要で気軽に相談。LINEやビデオ通話で対応します。</p>
@@ -248,20 +248,28 @@
   <section class="section--gray" id="links">
     <div class="container">
       <div class="links__grid">
-        <a href="#" class="links__item">
-          <div class="links__icon">人</div>
+        <a href="staff.html" class="links__item">
+          <div class="links__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
           <p class="links__label">スタッフ紹介</p>
         </a>
         <a href="#" class="links__item">
-          <div class="links__icon">★</div>
+          <div class="links__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
           <p class="links__label">お客様の声</p>
         </a>
         <a href="#" class="links__item">
-          <div class="links__icon">IG</div>
+          <div class="links__icon links__icon--image">
+            <img src="images/hero/Instagramicon.png" alt="Instagram">
+          </div>
           <p class="links__label">Instagram</p>
         </a>
         <a href="#" class="links__item">
-          <div class="links__icon">B</div>
+          <div class="links__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
           <p class="links__label">ブログ</p>
         </a>
       </div>
@@ -344,10 +352,11 @@
       <nav class="footer__nav">
         <ul>
           <li><a href="index.html">HOME</a></li>
-          <li><a href="rent.html">借りたい</a></li>
-          <li><a href="#">貸したい</a></li>
+          <!-- <li><a href="rent.html">借りたい</a></li> -->
+          <!-- <li><a href="#">貸したい</a></li> -->
           <li><a href="buy.html">買いたい</a></li>
           <li><a href="sell.html">売りたい</a></li>
+          <li><a href="staff.html">スタッフ紹介</a></li>
           <li><a href="#company">会社情報</a></li>
           <li><a href="contact.html">お問合せ</a></li>
           <li><a href="#">プライバシーポリシー</a></li>
@@ -357,5 +366,6 @@
     </div>
   </footer>
 
+  <script src="js/main.js" defer></script>
 </body>
 </html>
