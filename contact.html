@@ -19,42 +19,36 @@
       <a href="index.html" class="header__logo">
         <img src="logo.jpg" alt="Deen不動産">
       </a>
-      <nav class="header__nav">
-        <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="rent.html">借りたい</a></li>
-          <li><a href="#">貸したい</a></li>
-          <li><a href="buy.html">買いたい</a></li>
-          <li><a href="sell.html">売りたい</a></li>
-          <li><a href="index.html#company">会社情報</a></li>
-        </ul>
-      </nav>
-      <div class="header__cta">
-        <div class="header__cta-list">
-          <a href="tel:0000000000" class="btn btn--small btn--secondary">TEL</a>
-          <a href="#" class="btn btn--small btn--primary">LINE相談</a>
-          <a href="contact.html" class="btn btn--small btn--primary">来店予約</a>
-        </div>
-      </div>
-      <label for="hamburger" class="hamburger-label">
+      <label for="hamburger" class="hamburger-label" aria-label="メニュー">
         <span></span>
         <span></span>
         <span></span>
       </label>
     </div>
+    <!-- Click-outside-to-close backdrop -->
+    <label for="hamburger" class="menu-backdrop" aria-hidden="true"></label>
+    <!-- Right-side drawer menu -->
     <div class="mobile-menu">
-      <ul class="mobile-menu__nav">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="rent.html">借りたい</a></li>
-        <li><a href="#">貸したい</a></li>
-        <li><a href="buy.html">買いたい</a></li>
-        <li><a href="sell.html">売りたい</a></li>
-        <li><a href="index.html#company">会社情報</a></li>
-      </ul>
-      <div class="mobile-menu__cta">
-        <a href="tel:0000000000" class="btn btn--secondary">電話で問い合わせる</a>
-        <a href="#" class="btn btn--primary">LINEで相談する</a>
-        <a href="contact.html" class="btn btn--primary">来店予約する</a>
+      <div class="mobile-menu__inner">
+        <div class="mobile-menu__section">
+          <p class="mobile-menu__heading">Menu</p>
+          <ul class="mobile-menu__nav">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="buy.html">買いたい</a></li>
+            <li><a href="sell.html">売りたい</a></li>
+            <li><a href="index.html#company">会社情報</a></li>
+            <li><a href="contact.html">お問い合わせ</a></li>
+          </ul>
+        </div>
+        <div class="mobile-menu__section">
+          <p class="mobile-menu__heading">Contact</p>
+          <p class="mobile-menu__tel">0XX-XXX-XXXX</p>
+          <p class="mobile-menu__hours">営業時間 10:00〜19:00 / 水曜定休</p>
+          <div class="mobile-menu__cta">
+            <a href="#" class="btn btn--primary">LINEで相談する</a>
+            <a href="contact.html" class="btn btn--white">来店予約する</a>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -163,8 +157,8 @@
       <nav class="footer__nav">
         <ul>
           <li><a href="index.html">HOME</a></li>
-          <li><a href="rent.html">借りたい</a></li>
-          <li><a href="#">貸したい</a></li>
+          <!-- <li><a href="rent.html">借りたい</a></li> -->
+          <!-- <li><a href="#">貸したい</a></li> -->
           <li><a href="buy.html">買いたい</a></li>
           <li><a href="sell.html">売りたい</a></li>
           <li><a href="index.html#company">会社情報</a></li>
@@ -176,5 +170,6 @@
     </div>
   </footer>
 
+  <script src="js/main.js" defer></script>
 </body>
 </html>
