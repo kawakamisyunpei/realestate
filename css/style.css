@@ -353,8 +353,8 @@ html:has(.hamburger-toggle:checked) {
 .mobile-menu__nav a:hover { color: var(--gold); }
 
 .mobile-menu__tel {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2rem;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 1.6rem;
   color: #fff;
   letter-spacing: 0.05em;
   line-height: 1.2;
@@ -400,9 +400,9 @@ html:has(.hamburger-toggle:checked) {
   background-position: center center;
   background-repeat: no-repeat;
   opacity: 0;
-  animation: hero-fade 21s infinite ease-in-out;
-  /* Ken Burns ズーム効果を控えめに追加 */
-  transform: scale(1.04);
+  animation: hero-fade 21s infinite linear;
+  /* Ken Burns: フェード + 途切れずゆっくりズームイン */
+  transform: scale(1);
 }
 
 .hero__slide:nth-child(1) { animation-delay: 0s; }
@@ -410,11 +410,11 @@ html:has(.hamburger-toggle:checked) {
 .hero__slide:nth-child(3) { animation-delay: 14s; }
 
 @keyframes hero-fade {
-  0%   { opacity: 0; transform: scale(1.04); }
-  6%   { opacity: 1; }
-  33%  { opacity: 1; transform: scale(1.0); }
-  39%  { opacity: 0; }
-  100% { opacity: 0; transform: scale(1.04); }
+  0%   { opacity: 0; transform: scale(1); }
+  4%   { opacity: 1; }
+  33%  { opacity: 1; }
+  38%  { opacity: 0; }
+  100% { opacity: 0; transform: scale(1.2); }
 }
 
 /* Dark gradient mask for text readability */
@@ -1409,6 +1409,42 @@ html:has(.hamburger-toggle:checked) {
 }
 
 /* ========================================
+   FORM DATETIME (reservation)
+   ======================================== */
+.form-datetime {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.form-datetime__date {
+  flex: 1;
+}
+
+.form-datetime__time {
+  flex: 1;
+}
+
+.form-datetime input[type="date"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.9rem;
+  color: var(--navy);
+  background: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-datetime input[type="date"]:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(183, 152, 105, 0.12);
+}
+
+/* ========================================
    ALT CONTACT (contact page)
    ======================================== */
 .alt-contact {
@@ -1537,9 +1573,9 @@ html:has(.hamburger-toggle:checked) {
 }
 
 .cta__phone {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2.2rem;
-  font-weight: 500;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
   margin-bottom: 8px;
   letter-spacing: 0.1em;
   color: var(--gold);
@@ -1562,6 +1598,81 @@ html:has(.hamburger-toggle:checked) {
 }
 
 .cta__buttons .btn { width: 100%; }
+
+/* ========================================
+   MODAL / POPUP
+   ======================================== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.is-active {
+  display: flex;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 4px;
+  padding: 48px 36px;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: modal-in 0.3s ease;
+}
+
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 64px;
+  margin: 0 auto 20px;
+}
+
+.modal__title {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.modal__text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.modal__close {
+  display: inline-block;
+  padding: 12px 40px;
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal__close:hover {
+  background: var(--gold);
+}
 
 /* ========================================
    COMPANY TABLE
@@ -1771,7 +1882,7 @@ html:has(.hamburger-toggle:checked) {
     height: 360px;
   }
 
-  .cta__phone { font-size: 2.8rem; }
+  .cta__phone { font-size: 2.2rem; }
 
   .cta__buttons {
     flex-direction: row;

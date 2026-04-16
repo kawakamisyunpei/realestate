@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お問い合わせ | Deen不動産</title>
-  <meta name="description" content="Deen不動産へのお問い合わせ・ご相談・来店予約はこちら。電話・LINE・フォームからお気軽にご連絡ください。">
+  <title>オンライン相談予約 | Deen不動産</title>
+  <meta name="description" content="Deen不動産のオンライン相談予約。ビデオ通話で自宅からお気軽にご相談いただけます。ご希望の日時をお選びください。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,9 +25,7 @@
         <span></span>
       </label>
     </div>
-    <!-- Click-outside-to-close backdrop -->
     <label for="hamburger" class="menu-backdrop" aria-hidden="true"></label>
-    <!-- Right-side drawer menu -->
     <div class="mobile-menu">
       <div class="mobile-menu__inner">
         <div class="mobile-menu__section">
@@ -36,6 +34,7 @@
             <li><a href="index.html">HOME</a></li>
             <li><a href="buy.html">買いたい</a></li>
             <li><a href="sell.html">売りたい</a></li>
+            <li><a href="staff.html">スタッフ紹介</a></li>
             <li><a href="company.html">会社情報</a></li>
             <li><a href="contact.html">お問い合わせ</a></li>
           </ul>
@@ -55,99 +54,132 @@
 
   <!-- ========== PAGE HEADER ========== -->
   <div class="page-header">
-    <h1 class="page-header__title" data-en="Contact">お問い合わせ</h1>
-    <p class="page-header__breadcrumb"><a href="index.html">HOME</a> &gt; お問い合わせ</p>
+    <h1 class="page-header__title" data-en="Online">オンライン相談予約</h1>
+    <p class="page-header__breadcrumb"><a href="index.html">HOME</a> &gt; オンライン相談予約</p>
   </div>
 
-  <!-- ========== ALTERNATIVE CONTACT ========== -->
+  <!-- ========== INTRO ========== -->
   <section class="section--white">
     <div class="container">
-      <h2 class="section-title" data-en="Other Ways">お気軽にご連絡ください</h2>
-      <p class="section-subtitle">フォーム以外にも、お電話やLINEでもご相談いただけます</p>
-      <div class="alt-contact">
-        <a href="tel:08028827863" class="alt-contact__item" style="text-decoration: none; color: inherit;">
-          <div class="alt-contact__icon">TEL</div>
-          <div class="alt-contact__text">
-            <p class="alt-contact__label">電話で問い合わせる</p>
-            <p class="alt-contact__detail">080-2882-7863（営業時間 10:00〜19:00 / 水曜定休）</p>
-          </div>
-        </a>
-        <a href="https://lin.ee/TUuuPNt" class="alt-contact__item" style="text-decoration: none; color: inherit;">
-          <div class="alt-contact__icon">LINE</div>
-          <div class="alt-contact__text">
-            <p class="alt-contact__label">LINEで相談する</p>
-            <p class="alt-contact__detail">@deen-fudosan を友だち追加してメッセージをお送りください</p>
-          </div>
-        </a>
-        <a href="reserve.html" class="alt-contact__item" style="text-decoration: none; color: inherit;">
-          <div class="alt-contact__icon">店舗</div>
-          <div class="alt-contact__text">
-            <p class="alt-contact__label">来店予約する</p>
-            <p class="alt-contact__detail">来店予約フォームからご希望の日時をお選びください</p>
-          </div>
-        </a>
+      <h2 class="section-title" data-en="Online Consultation">ご自宅から気軽にご相談</h2>
+      <p class="section-subtitle">ビデオ通話で、来店と同じようにご相談いただけます</p>
+      <div class="about__inner">
+        <div class="about__text" style="max-width: 780px; margin: 0 auto;">
+          <p>「遠方で来店が難しい」「小さなお子様がいて外出しづらい」「まずは気軽に話を聞きたい」そんな方に、オンラインでのご相談をご用意しています。</p>
+          <p>ご予約後、当日の接続方法をメールでご案内いたします。Zoom等のビデオ通話を使用しますので、スマートフォンやパソコンがあればどこからでもご相談可能です。</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== CONTACT FORM ========== -->
+  <!-- ========== RESERVATION FORM ========== -->
   <section class="section--gray">
     <div class="container">
-      <h2 class="section-title" data-en="Inquiry Form">フォームからお問い合わせ</h2>
+      <h2 class="section-title" data-en="Reservation Form">予約フォーム</h2>
       <form class="contact-form" action="https://formsubmit.co/08eb751720bed483036f2099426067f1" method="POST">
-        <input type="hidden" name="_subject" value="【Deen不動産】お問い合わせ">
+        <input type="hidden" name="_subject" value="【Deen不動産】オンライン相談予約">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="">
+
+        <!-- お名前 -->
         <div class="contact-form__group">
           <label>お名前 <span class="required">必須</span></label>
           <input type="text" name="name" placeholder="例: 山田 太郎" required>
         </div>
+
+        <!-- フリガナ -->
         <div class="contact-form__group">
-          <label>メールアドレス <span class="required">必須</span></label>
-          <input type="email" name="email" placeholder="例: example@mail.com" required>
+          <label>フリガナ <span class="required">必須</span></label>
+          <input type="text" name="furigana" placeholder="例: ヤマダ タロウ" required>
         </div>
+
+        <!-- 電話番号 -->
         <div class="contact-form__group">
           <label>電話番号</label>
           <input type="tel" name="phone" placeholder="例: 090-1234-5678">
         </div>
+
+        <!-- メールアドレス -->
         <div class="contact-form__group">
-          <label>お問い合わせ種別 <span class="required">必須</span></label>
-          <select name="category" required>
-            <option value="">選択してください</option>
-            <option>賃貸物件について</option>
-            <option>購入物件について</option>
-            <option>売却・査定について</option>
-            <option>賃貸管理について</option>
-            <option>来店予約</option>
-            <option>オンライン相談</option>
-            <option>その他</option>
-          </select>
+          <label>メールアドレス <span class="required">必須</span></label>
+          <input type="email" name="email" placeholder="例: example@mail.com" required>
         </div>
+
+        <!-- メールアドレス（確認） -->
         <div class="contact-form__group">
-          <label>ご希望の連絡方法</label>
-          <select name="contact_method">
-            <option>メール</option>
-            <option>電話</option>
-            <option>LINE</option>
-          </select>
+          <label>メールアドレス（確認） <span class="required">必須</span></label>
+          <input type="email" name="_replyto" placeholder="確認の為もう一度ご入力ください" required>
         </div>
+
+        <!-- ご希望日時1 -->
         <div class="contact-form__group">
-          <label>お問い合わせ内容 <span class="required">必須</span></label>
-          <textarea name="message" placeholder="ご質問やご希望の条件など、お気軽にご記入ください" required></textarea>
+          <label>ご希望日時1 <span class="required">必須</span></label>
+          <div class="form-datetime">
+            <div class="form-datetime__date">
+              <input type="date" name="date1" required>
+            </div>
+            <div class="form-datetime__time">
+              <select name="time1" required>
+                <option value="">時間帯を選択</option>
+                <option>10:00〜11:00</option>
+                <option>11:00〜12:00</option>
+                <option>13:00〜14:00</option>
+                <option>14:00〜15:00</option>
+                <option>15:00〜16:00</option>
+                <option>16:00〜17:00</option>
+                <option>17:00〜18:00</option>
+                <option>18:00〜19:00</option>
+              </select>
+            </div>
+          </div>
         </div>
+
+        <!-- ご希望日時2 -->
+        <div class="contact-form__group">
+          <label>ご希望日時2</label>
+          <div class="form-datetime">
+            <div class="form-datetime__date">
+              <input type="date" name="date2">
+            </div>
+            <div class="form-datetime__time">
+              <select name="time2">
+                <option value="">時間帯を選択</option>
+                <option>10:00〜11:00</option>
+                <option>11:00〜12:00</option>
+                <option>13:00〜14:00</option>
+                <option>14:00〜15:00</option>
+                <option>15:00〜16:00</option>
+                <option>16:00〜17:00</option>
+                <option>17:00〜18:00</option>
+                <option>18:00〜19:00</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ご質問・ご希望 -->
+        <div class="contact-form__group">
+          <label>ご質問・ご希望などありましたらご自由にご記入ください</label>
+          <textarea name="message" placeholder="ご質問やご希望の条件など、お気軽にご記入ください"></textarea>
+        </div>
+
         <div class="contact-form__actions">
-          <button type="submit" class="btn btn--primary" style="padding: 14px 48px;">送信する</button>
+          <button type="submit" class="btn btn--primary" style="padding: 14px 48px;">予約する</button>
         </div>
       </form>
     </div>
   </section>
 
-  <!-- ========== MAP ========== -->
-  <section class="section--white">
+  <!-- ========== CTA ========== -->
+  <section class="cta">
     <div class="container">
-      <h2 class="section-title" data-en="Access">アクセス</h2>
-      <p class="section-subtitle">〒700-0000 岡山県岡山市北区○○ ○-○-○</p>
-      <div class="map-placeholder">Google Map（実装時に埋め込み）</div>
+      <h2 class="cta__heading">お電話でもご予約いただけます</h2>
+      <p class="cta__phone">080-2882-7863</p>
+      <p class="cta__hours">営業時間 10:00〜19:00（水曜定休）</p>
+      <div class="cta__buttons">
+        <a href="https://lin.ee/TUuuPNt" class="btn btn--white">LINEで相談する</a>
+        <a href="contact.html" class="btn btn--white">お問い合わせ</a>
+      </div>
     </div>
   </section>
 
@@ -160,10 +192,9 @@
       <nav class="footer__nav">
         <ul>
           <li><a href="index.html">HOME</a></li>
-          <!-- <li><a href="rent.html">借りたい</a></li> -->
-          <!-- <li><a href="#">貸したい</a></li> -->
           <li><a href="buy.html">買いたい</a></li>
           <li><a href="sell.html">売りたい</a></li>
+          <li><a href="staff.html">スタッフ紹介</a></li>
           <li><a href="company.html">会社情報</a></li>
           <li><a href="contact.html">お問合せ</a></li>
           <li><a href="#">プライバシーポリシー</a></li>
@@ -177,8 +208,8 @@
   <div class="modal-overlay" id="completeModal">
     <div class="modal">
       <div class="modal__icon">&#10003;</div>
-      <h3 class="modal__title">送信が完了しました</h3>
-      <p class="modal__text">お問い合わせありがとうございます。<br>内容を確認のうえ、折り返しご連絡いたします。</p>
+      <h3 class="modal__title">ご予約を受け付けました</h3>
+      <p class="modal__text">ご予約ありがとうございます。<br>確認のご連絡を差し上げますので、しばらくお待ちください。</p>
       <button class="modal__close" id="modalClose">閉じる</button>
     </div>
   </div>
