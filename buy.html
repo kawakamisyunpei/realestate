@@ -67,7 +67,8 @@
         <div class="search-form__row">
           <div class="search-form__group">
             <label>エリア</label>
-            <select>
+            <select id="filter-area">
+              <option value="">指定なし</option>
               <option>岡山市北区</option>
               <option>岡山市中区</option>
               <option>岡山市南区</option>
@@ -79,31 +80,31 @@
           </div>
           <div class="search-form__group">
             <label>価格帯</label>
-            <select>
-              <option>指定なし</option>
-              <option>〜1,000万円</option>
-              <option>1,000万〜2,000万円</option>
-              <option>2,000万〜3,000万円</option>
-              <option>3,000万〜4,000万円</option>
-              <option>4,000万円〜</option>
+            <select id="filter-price">
+              <option value="">指定なし</option>
+              <option value="0-1000">〜1,000万円</option>
+              <option value="1000-2000">1,000万〜2,000万円</option>
+              <option value="2000-3000">2,000万〜3,000万円</option>
+              <option value="3000-4000">3,000万〜4,000万円</option>
+              <option value="4000-">4,000万円〜</option>
             </select>
           </div>
           <div class="search-form__group">
             <label>間取り</label>
-            <select>
-              <option>指定なし</option>
-              <option>1LDK〜2LDK</option>
-              <option>3LDK</option>
-              <option>4LDK</option>
-              <option>5LDK以上</option>
+            <select id="filter-layout">
+              <option value="">指定なし</option>
+              <option value="1LDK,2LDK">1LDK〜2LDK</option>
+              <option value="3LDK">3LDK</option>
+              <option value="4LDK">4LDK</option>
+              <option value="5LDK+">5LDK以上</option>
             </select>
           </div>
         </div>
         <div class="search-form__row">
           <div class="search-form__group">
             <label>物件種別</label>
-            <select>
-              <option>指定なし</option>
+            <select id="filter-type">
+              <option value="">指定なし</option>
               <option>新築一戸建て</option>
               <option>中古一戸建て</option>
               <option>新築マンション</option>
@@ -113,7 +114,7 @@
           </div>
         </div>
         <div class="search-form__actions">
-          <button class="btn btn--primary" style="padding: 12px 48px;">物件を探す</button>
+          <button id="search-btn" class="btn btn--primary" style="padding: 12px 48px;">物件を探す</button>
         </div>
       </div>
     </div>
@@ -123,91 +124,16 @@
   <section class="section--gray">
     <div class="container">
       <h2 class="section-title" data-en="Properties">物件一覧</h2>
-      <p class="section-subtitle">岡山エリアの購入物件</p>
+      <p class="section-subtitle" id="result-count">岡山エリアの購入物件</p>
 
-      <div class="property-grid">
-        <!-- Property 1 -->
-        <div class="property-card">
-          <div class="property-card__image placeholder" style="height:180px;">物件写真</div>
-          <div class="property-card__body">
-            <h3 class="property-card__name">新築一戸建て 岡山市北区○○</h3>
-            <p class="property-card__info">
-              岡山市北区○○町 / JR岡山駅 車12分<br>
-              4LDK / 建物面積 105.2m² / 土地面積 180.5m²
-            </p>
-            <p class="property-card__price">2,980万円</p>
-          </div>
-        </div>
-        <!-- Property 2 -->
-        <div class="property-card">
-          <div class="property-card__image placeholder" style="height:180px;">物件写真</div>
-          <div class="property-card__body">
-            <h3 class="property-card__name">中古マンション グランシティ岡山</h3>
-            <p class="property-card__info">
-              岡山市北区△△ / JR岡山駅 徒歩8分<br>
-              3LDK / 72.5m² / 築10年 / 8階
-            </p>
-            <p class="property-card__price">2,480万円</p>
-          </div>
-        </div>
-        <!-- Property 3 -->
-        <div class="property-card">
-          <div class="property-card__image placeholder" style="height:180px;">物件写真</div>
-          <div class="property-card__body">
-            <h3 class="property-card__name">中古一戸建て 倉敷市□□</h3>
-            <p class="property-card__info">
-              倉敷市□□ / JR倉敷駅 車10分<br>
-              4LDK / 建物面積 98.0m² / 土地面積 200.0m²
-            </p>
-            <p class="property-card__price">1,880万円</p>
-          </div>
-        </div>
-        <!-- Property 4 -->
-        <div class="property-card">
-          <div class="property-card__image placeholder" style="height:180px;">物件写真</div>
-          <div class="property-card__body">
-            <h3 class="property-card__name">新築一戸建て 岡山市南区◇◇</h3>
-            <p class="property-card__info">
-              岡山市南区◇◇ / JR妹尾駅 徒歩15分<br>
-              3LDK / 建物面積 92.0m² / 土地面積 150.0m²
-            </p>
-            <p class="property-card__price">3,280万円</p>
-          </div>
-        </div>
-        <!-- Property 5 -->
-        <div class="property-card">
-          <div class="property-card__image placeholder" style="height:180px;">物件写真</div>
-          <div class="property-card__body">
-            <h3 class="property-card__name">土地 岡山市東区◎◎</h3>
-            <p class="property-card__info">
-              岡山市東区◎◎ / JR上道駅 徒歩20分<br>
-              土地面積 220.0m² / 建ぺい率60% / 容積率200%
-            </p>
-            <p class="property-card__price">1,200万円</p>
-          </div>
-        </div>
-        <!-- Property 6 -->
-        <div class="property-card">
-          <div class="property-card__image placeholder" style="height:180px;">物件写真</div>
-          <div class="property-card__body">
-            <h3 class="property-card__name">新築マンション パークヒルズ岡山</h3>
-            <p class="property-card__info">
-              岡山市北区○○ / JR岡山駅 徒歩5分<br>
-              2LDK / 65.0m² / 新築 / 12階
-            </p>
-            <p class="property-card__price">3,580万円</p>
-          </div>
+      <div class="property-grid" id="property-grid">
+        <!-- Supabaseから動的に表示 -->
+        <div style="grid-column:1/-1; text-align:center; padding:60px 0; color:var(--text-muted);">
+          読み込み中...
         </div>
       </div>
 
-      <!-- Pagination -->
-      <div class="pagination">
-        <span class="pagination__item pagination__item--active">1</span>
-        <a href="#" class="pagination__item">2</a>
-        <a href="#" class="pagination__item">3</a>
-        <a href="#" class="pagination__item">…</a>
-        <a href="#" class="pagination__item">8</a>
-      </div>
+      <div class="pagination" id="pagination"></div>
     </div>
   </section>
 
@@ -247,5 +173,145 @@
   </footer>
 
   <script src="js/main.js" defer></script>
+
+  <!-- Supabase JS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    (() => {
+      const SUPABASE_URL = 'https://mapmlunyowklihchrwik.supabase.co';
+      const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1hcG1sdW55b3drbGloY2hyd2lrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNTYwMjMsImV4cCI6MjA5MTkzMjAyM30.F9M4GHCp4Fv4s_T8LOYjfJlrGdvd26V9YQZT025BClg';
+      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+      const PAGE_SIZE = 6;
+      let currentPage = 1;
+
+      // ---- 物件カード生成 ----
+      function buildCard(p) {
+        const img = p.property_images && p.property_images.length > 0
+          ? `<div class="property-card__image" style="height:180px;background-image:url('${p.property_images[0].image_url}');background-size:cover;background-position:center;"></div>`
+          : `<div class="property-card__image placeholder" style="height:180px;">物件写真</div>`;
+
+        const access = [p.nearest_station, p.access].filter(Boolean).join(' ');
+        const details = [];
+        if (p.layout) details.push(p.layout);
+        if (p.building_area) details.push(`建物面積 ${p.building_area}m²`);
+        if (p.land_area) details.push(`土地面積 ${p.land_area}m²`);
+        if (p.building_age != null) details.push(`築${p.building_age}年`);
+        if (p.floor) details.push(`${p.floor}階`);
+
+        return `
+          <div class="property-card">
+            ${img}
+            <div class="property-card__body">
+              <h3 class="property-card__name">${p.title}</h3>
+              <p class="property-card__info">
+                ${p.area}${p.address ? ' ' + p.address : ''}${access ? ' / ' + access : ''}<br>
+                ${details.join(' / ')}
+              </p>
+              <p class="property-card__price">${Number(p.price).toLocaleString()}万円</p>
+            </div>
+          </div>`;
+      }
+
+      // ---- ページネーション生成 ----
+      function buildPagination(total, page) {
+        const totalPages = Math.ceil(total / PAGE_SIZE);
+        if (totalPages <= 1) return '';
+        let html = '';
+        for (let i = 1; i <= totalPages; i++) {
+          if (i === page) {
+            html += `<span class="pagination__item pagination__item--active">${i}</span>`;
+          } else {
+            html += `<a href="#" class="pagination__item" data-page="${i}">${i}</a>`;
+          }
+        }
+        return html;
+      }
+
+      // ---- 検索・取得 ----
+      async function fetchProperties(page = 1) {
+        const area     = document.getElementById('filter-area').value;
+        const price    = document.getElementById('filter-price').value;
+        const layout   = document.getElementById('filter-layout').value;
+        const type     = document.getElementById('filter-type').value;
+
+        let query = supabase
+          .from('properties')
+          .select('*, property_images(image_url, sort_order)', { count: 'exact' })
+          .eq('is_published', true)
+          .order('created_at', { ascending: false })
+          .range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1);
+
+        if (area)  query = query.eq('area', area);
+        if (type)  query = query.eq('property_type', type);
+
+        // 価格帯フィルター
+        if (price) {
+          const [min, max] = price.split('-');
+          if (min) query = query.gte('price', Number(min));
+          if (max) query = query.lte('price', Number(max));
+        }
+
+        // 間取りフィルター
+        if (layout) {
+          if (layout === '1LDK,2LDK') {
+            query = query.in('layout', ['1LDK', '2LDK', '1SLDK', '2SLDK']);
+          } else if (layout === '5LDK+') {
+            query = query.gte('layout', '5');
+          } else {
+            query = query.eq('layout', layout);
+          }
+        }
+
+        const { data, count, error } = await query;
+
+        const grid       = document.getElementById('property-grid');
+        const pagination = document.getElementById('pagination');
+        const countEl    = document.getElementById('result-count');
+
+        if (error) {
+          grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--text-muted);">データの取得に失敗しました。</div>';
+          return;
+        }
+
+        if (!data || data.length === 0) {
+          grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--text-muted);">条件に合う物件が見つかりませんでした。</div>';
+          countEl.textContent = '0件の物件が見つかりました';
+          pagination.innerHTML = '';
+          return;
+        }
+
+        // 画像をsort_order順にソート
+        data.forEach(p => {
+          if (p.property_images) {
+            p.property_images.sort((a, b) => a.sort_order - b.sort_order);
+          }
+        });
+
+        grid.innerHTML = data.map(buildCard).join('');
+        countEl.textContent = `${count}件の物件が見つかりました`;
+        pagination.innerHTML = buildPagination(count, page);
+
+        // ページネーションのクリックイベント
+        pagination.querySelectorAll('[data-page]').forEach(el => {
+          el.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentPage = Number(el.dataset.page);
+            fetchProperties(currentPage);
+            document.getElementById('property-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        });
+      }
+
+      // ---- イベント設定 ----
+      document.getElementById('search-btn').addEventListener('click', () => {
+        currentPage = 1;
+        fetchProperties(1);
+      });
+
+      // ---- 初回ロード ----
+      fetchProperties(1);
+    })();
+  </script>
 </body>
 </html>

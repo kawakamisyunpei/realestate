@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>物件管理 | Deen不動産</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif; background: #f0f2f5; color: #333; }
+
+    /* ---- ヘッダー ---- */
+    .adm-header {
+      background: #16365c;
+      color: #fff;
+      padding: 0 28px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .adm-header__title { font-size: 1rem; font-weight: 700; letter-spacing: 0.05em; }
+    .adm-header__right { display: flex; align-items: center; gap: 16px; font-size: 0.85rem; }
+    .btn-logout {
+      padding: 6px 16px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 3px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 0.82rem;
+      transition: background 0.2s;
+    }
+    .btn-logout:hover { background: rgba(255,255,255,0.15); }
+
+    /* ---- レイアウト ---- */
+    .adm-main { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+
+    /* ---- ツールバー ---- */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .toolbar h1 { font-size: 1.2rem; color: #16365c; }
+
+    /* ---- ボタン ---- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 20px;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s, background 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn--navy { background: #16365c; color: #fff; }
+    .btn--gold { background: #b79869; color: #fff; }
+    .btn--danger { background: #e74c3c; color: #fff; }
+    .btn--outline { background: transparent; border: 1px solid #ccc; color: #555; }
+    .btn--sm { padding: 5px 12px; font-size: 0.8rem; }
+
+    /* ---- テーブル ---- */
+    .table-wrap { background: #fff; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th {
+      background: #f7f8fa;
+      padding: 13px 14px;
+      text-align: left;
+      font-weight: 700;
+      color: #16365c;
+      border-bottom: 2px solid #e8eaf0;
+      white-space: nowrap;
+    }
+    td {
+      padding: 13px 14px;
+      border-bottom: 1px solid #f0f1f4;
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafbfc; }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge--published { background: #d4edda; color: #1a7a35; }
+    .badge--draft     { background: #f0f0f0; color: #888; }
+    .td-actions { display: flex; gap: 6px; }
+    .empty-row td { text-align: center; padding: 48px; color: #aaa; }
+
+    /* ---- モーダル ---- */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 200;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 16px;
+      overflow-y: auto;
+    }
+    .modal-overlay.is-active { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 6px;
+      width: 100%;
+      max-width: 680px;
+      padding: 32px 28px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+      animation: modal-in 0.25s ease;
+      margin: auto;
+    }
+    @keyframes modal-in { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+    .modal__title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #16365c;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #e8eaf0;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-grid .full { grid-column: 1 / -1; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group label { font-size: 0.82rem; font-weight: 600; color: #16365c; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 9px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { outline: none; border-color: #b79869; }
+    .form-group textarea { min-height: 90px; resize: vertical; }
+    .required-mark { color: #e74c3c; margin-left: 2px; }
+    .modal__footer {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid #f0f1f4;
+    }
+
+    /* ---- 削除確認モーダル ---- */
+    .confirm-modal { max-width: 420px; text-align: center; }
+    .confirm-modal p { color: #555; font-size: 0.92rem; margin-bottom: 24px; line-height: 1.7; }
+
+    /* ---- トースト ---- */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #16365c;
+      color: #fff;
+      padding: 13px 22px;
+      border-radius: 5px;
+      font-size: 0.88rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 999;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    /* ---- 画像サムネ ---- */
+    .img-thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .img-thumb {
+      position: relative;
+      aspect-ratio: 4/3;
+      background: #f0f2f5 center/cover no-repeat;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .img-thumb__badge { position:absolute; top:4px; left:4px; background:#b79869; color:#fff; font-size:0.68rem; padding:2px 6px; border-radius:2px; letter-spacing:0.05em; }
+    .img-thumb__new   { position:absolute; bottom:4px; left:4px; background:#16365c; color:#fff; font-size:0.68rem; padding:2px 6px; border-radius:2px; letter-spacing:0.05em; }
+    .img-thumb__del   { position:absolute; top:4px; right:4px; width:22px; height:22px; border-radius:50%; background:rgba(231,76,60,0.92); color:#fff; border:none; cursor:pointer; font-size:0.85rem; line-height:1; display:flex; align-items:center; justify-content:center; padding:0; }
+    .img-thumb__del:hover { background:#e74c3c; }
+    .list-thumb {
+      width: 56px; height: 42px;
+      background: #f0f2f5 center/cover no-repeat;
+      border-radius: 3px;
+      border: 1px solid #e8eaf0;
+      display: inline-block;
+    }
+
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="adm-header">
+    <span class="adm-header__title">Deen不動産 管理画面</span>
+    <div class="adm-header__right">
+      <span id="admin-email" style="opacity:0.7;"></span>
+      <button class="btn-logout" id="logout-btn">ログアウト</button>
+    </div>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="adm-main">
+    <div class="toolbar">
+      <h1>物件一覧</h1>
+      <button class="btn btn--navy" id="add-btn">＋ 物件を追加</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:72px;">画像</th>
+            <th>物件名</th>
+            <th>種別</th>
+            <th>エリア</th>
+            <th>価格</th>
+            <th>間取り</th>
+            <th>公開</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="property-tbody">
+          <tr class="empty-row"><td colspan="8">読み込み中...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- 追加・編集モーダル -->
+  <div class="modal-overlay" id="edit-modal">
+    <div class="modal">
+      <div class="modal__title" id="modal-title">物件を追加</div>
+      <form id="property-form" autocomplete="off">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label>物件名<span class="required-mark">*</span></label>
+            <input type="text" name="title" required placeholder="例: 新築一戸建て 岡山市北区○○">
+          </div>
+          <div class="form-group">
+            <label>物件種別<span class="required-mark">*</span></label>
+            <select name="property_type" required>
+              <option value="">選択してください</option>
+              <option>新築一戸建て</option>
+              <option>中古一戸建て</option>
+              <option>新築マンション</option>
+              <option>中古マンション</option>
+              <option>土地</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>エリア<span class="required-mark">*</span></label>
+            <select name="area" required>
+              <option value="">選択してください</option>
+              <option>岡山市北区</option>
+              <option>岡山市中区</option>
+              <option>岡山市南区</option>
+              <option>岡山市東区</option>
+              <option>倉敷市</option>
+              <option>津山市</option>
+              <option>その他</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>住所</label>
+            <input type="text" name="address" placeholder="例: 岡山市北区○○町1-2-3">
+          </div>
+          <div class="form-group">
+            <label>最寄り駅</label>
+            <input type="text" name="nearest_station" placeholder="例: JR岡山駅">
+          </div>
+          <div class="form-group">
+            <label>アクセス</label>
+            <input type="text" name="access" placeholder="例: 徒歩8分">
+          </div>
+          <div class="form-group">
+            <label>価格（万円）<span class="required-mark">*</span></label>
+            <input type="number" name="price" required min="1" placeholder="例: 2980">
+          </div>
+          <div class="form-group">
+            <label>間取り</label>
+            <input type="text" name="layout" placeholder="例: 3LDK">
+          </div>
+          <div class="form-group">
+            <label>建物面積（m²）</label>
+            <input type="number" name="building_area" step="0.01" placeholder="例: 98.5">
+          </div>
+          <div class="form-group">
+            <label>土地面積（m²）</label>
+            <input type="number" name="land_area" step="0.01" placeholder="例: 180.0">
+          </div>
+          <div class="form-group">
+            <label>築年数</label>
+            <input type="number" name="building_age" min="0" placeholder="例: 10（新築は空欄）">
+          </div>
+          <div class="form-group">
+            <label>階数</label>
+            <input type="number" name="floor" min="1" placeholder="例: 8（マンション用）">
+          </div>
+          <div class="form-group">
+            <label>建ぺい率（%）</label>
+            <input type="number" name="coverage_ratio" step="0.01" placeholder="例: 60">
+          </div>
+          <div class="form-group">
+            <label>容積率（%）</label>
+            <input type="number" name="floor_area_ratio" step="0.01" placeholder="例: 200">
+          </div>
+          <div class="form-group full">
+            <label>物件説明</label>
+            <textarea name="description" placeholder="物件の特徴や周辺環境など"></textarea>
+          </div>
+          <div class="form-group full">
+            <label>物件画像（先頭が一覧表示のメイン画像）</label>
+            <div id="image-list" class="img-thumb-grid"></div>
+            <input type="file" id="image-input" accept="image/jpeg,image/png,image/webp,image/gif" multiple
+                   style="padding:8px; border:1px dashed #bbb; background:#fafbfc; cursor:pointer; border-radius:4px; font-size:0.85rem;">
+            <p style="font-size:0.75rem; color:#888; margin-top:4px;">※ 5MB以下 / JPEG・PNG・WEBP・GIF / 複数選択可</p>
+          </div>
+          <div class="form-group full">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+              <input type="checkbox" name="is_published" style="width:16px;height:16px;padding:0;margin:0;">
+              公開する
+            </label>
+          </div>
+        </div>
+        <input type="hidden" name="id">
+        <div class="modal__footer">
+          <button type="button" class="btn btn--outline" id="modal-cancel">キャンセル</button>
+          <button type="submit" class="btn btn--navy" id="modal-save">保存する</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 削除確認モーダル -->
+  <div class="modal-overlay" id="delete-modal">
+    <div class="modal confirm-modal">
+      <div class="modal__title">物件を削除しますか？</div>
+      <p id="delete-name"></p>
+      <p style="font-size:0.82rem;color:#e74c3c;">この操作は取り消せません。</p>
+      <div class="modal__footer" style="justify-content:center;margin-top:16px;">
+        <button class="btn btn--outline" id="delete-cancel">キャンセル</button>
+        <button class="btn btn--danger" id="delete-confirm">削除する</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- トースト通知 -->
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = 'https://mapmlunyowklihchrwik.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1hcG1sdW55b3drbGloY2hyd2lrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNTYwMjMsImV4cCI6MjA5MTkzMjAyM30.F9M4GHCp4Fv4s_T8LOYjfJlrGdvd26V9YQZT025BClg';
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const BUCKET = 'property-images';
+    let deleteTargetId = null;
+
+    // ---- 画像管理 state ----
+    let existingImages = [];  // [{ id, image_url, sort_order }]
+    let pendingFiles = [];    // File[]
+    let deletedImageIds = []; // number[]
+
+    // ---- 画像 URL → Storage path 抽出 ----
+    function urlToPath(url) {
+      // Supabase public URL: .../storage/v1/object/public/<bucket>/<path>
+      const marker = `/object/public/${BUCKET}/`;
+      const idx = url.indexOf(marker);
+      return idx >= 0 ? url.substring(idx + marker.length) : null;
+    }
+
+    // ---- ファイル名サニタイズ ----
+    function sanitizeName(name) {
+      return name.replace(/[^a-zA-Z0-9._-]/g, '_');
+    }
+
+    // ---- 画像リスト描画 ----
+    function renderImageList() {
+      const container = document.getElementById('image-list');
+      const visibleExisting = existingImages.filter(img => !deletedImageIds.includes(img.id));
+      const items = [
+        ...visibleExisting.map((img, i) => ({ kind: 'existing', data: img, idx: i })),
+        ...pendingFiles.map((file, i) => ({ kind: 'new', data: file, idx: i }))
+      ];
+
+      if (items.length === 0) {
+        container.innerHTML = '<p style="font-size:0.8rem; color:#aaa; padding:8px 0;">画像は未登録です。下のボタンから追加できます。</p>';
+        return;
+      }
+
+      container.innerHTML = '';
+      items.forEach((item, globalIdx) => {
+        const div = document.createElement('div');
+        div.className = 'img-thumb';
+        let bg;
+        if (item.kind === 'existing') {
+          bg = item.data.image_url;
+          div.style.backgroundImage = `url('${bg}')`;
+        } else {
+          bg = URL.createObjectURL(item.data);
+          div.style.backgroundImage = `url('${bg}')`;
+        }
+        if (globalIdx === 0) {
+          const mainBadge = document.createElement('span');
+          mainBadge.className = 'img-thumb__badge';
+          mainBadge.textContent = 'MAIN';
+          div.appendChild(mainBadge);
+        }
+        if (item.kind === 'new') {
+          const newBadge = document.createElement('span');
+          newBadge.className = 'img-thumb__new';
+          newBadge.textContent = 'NEW';
+          div.appendChild(newBadge);
+        }
+        const delBtn = document.createElement('button');
+        delBtn.type = 'button';
+        delBtn.className = 'img-thumb__del';
+        delBtn.textContent = '×';
+        delBtn.title = '削除';
+        delBtn.addEventListener('click', () => {
+          if (item.kind === 'existing') {
+            deletedImageIds.push(item.data.id);
+          } else {
+            pendingFiles.splice(item.idx, 1);
+          }
+          renderImageList();
+        });
+        div.appendChild(delBtn);
+        container.appendChild(div);
+      });
+    }
+
+    // ---- 既存画像読み込み ----
+    async function loadExistingImages(propertyId) {
+      const { data, error } = await sb
+        .from('property_images')
+        .select('*')
+        .eq('property_id', propertyId)
+        .order('sort_order', { ascending: true });
+      existingImages = (!error && data) ? data : [];
+    }
+
+    // ---- 画像 state リセット ----
+    function resetImageState() {
+      existingImages = [];
+      pendingFiles = [];
+      deletedImageIds = [];
+      const input = document.getElementById('image-input');
+      if (input) input.value = '';
+    }
+
+    // ---- 認証チェック ----
+    async function checkAuth() {
+      const { data } = await sb.auth.getSession();
+      if (!data.session) {
+        location.href = 'index.html';
+        return false;
+      }
+      document.getElementById('admin-email').textContent = data.session.user.email;
+      return true;
+    }
+
+    // ---- トースト ----
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 2800);
+    }
+
+    // ---- 物件一覧取得・描画 ----
+    async function loadProperties() {
+      const { data, error } = await sb
+        .from('properties')
+        .select('*, property_images(image_url, sort_order)')
+        .order('created_at', { ascending: false });
+
+      const tbody = document.getElementById('property-tbody');
+      if (error || !data || data.length === 0) {
+        tbody.innerHTML = '<tr class="empty-row"><td colspan="8">物件がありません。「＋ 物件を追加」から登録してください。</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = data.map(p => {
+        const imgs = (p.property_images || []).slice().sort((a, b) => a.sort_order - b.sort_order);
+        const thumb = imgs.length > 0
+          ? `<span class="list-thumb" style="background-image:url('${imgs[0].image_url}');"></span>`
+          : '<span style="color:#ccc;">—</span>';
+        const safeTitle = String(p.title).replace(/'/g, "\\'");
+        return `
+        <tr>
+          <td>${thumb}</td>
+          <td><strong>${p.title}</strong></td>
+          <td>${p.property_type}</td>
+          <td>${p.area}</td>
+          <td>${Number(p.price).toLocaleString()}万円</td>
+          <td>${p.layout || '—'}</td>
+          <td>
+            <span class="badge ${p.is_published ? 'badge--published' : 'badge--draft'}">
+              ${p.is_published ? '公開中' : '非公開'}
+            </span>
+          </td>
+          <td>
+            <div class="td-actions">
+              <button class="btn btn--gold btn--sm" onclick="openEdit(${p.id})">編集</button>
+              <button class="btn btn--danger btn--sm" onclick="openDelete(${p.id}, '${safeTitle}')">削除</button>
+            </div>
+          </td>
+        </tr>`;
+      }).join('');
+    }
+
+    // ---- フォームリセット ----
+    function resetForm() {
+      const form = document.getElementById('property-form');
+      form.reset();
+      form.querySelector('[name="id"]').value = '';
+    }
+
+    // ---- 追加モーダルを開く ----
+    document.getElementById('add-btn').addEventListener('click', () => {
+      resetForm();
+      resetImageState();
+      renderImageList();
+      document.getElementById('modal-title').textContent = '物件を追加';
+      document.getElementById('edit-modal').classList.add('is-active');
+    });
+
+    // ---- 編集モーダルを開く ----
+    window.openEdit = async (id) => {
+      const { data, error } = await sb.from('properties').select('*').eq('id', id).single();
+      if (error || !data) { showToast('データの取得に失敗しました'); return; }
+
+      resetForm();
+      resetImageState();
+      const form = document.getElementById('property-form');
+      const fields = ['title','property_type','area','address','nearest_station','access',
+                      'price','layout','building_area','land_area','building_age','floor',
+                      'coverage_ratio','floor_area_ratio','description'];
+      fields.forEach(f => {
+        const el = form.querySelector(`[name="${f}"]`);
+        if (el && data[f] != null) el.value = data[f];
+      });
+      form.querySelector('[name="is_published"]').checked = !!data.is_published;
+      form.querySelector('[name="id"]').value = id;
+
+      await loadExistingImages(id);
+      renderImageList();
+
+      document.getElementById('modal-title').textContent = '物件を編集';
+      document.getElementById('edit-modal').classList.add('is-active');
+    };
+
+    // ---- ファイル選択 ----
+    document.getElementById('image-input').addEventListener('change', (e) => {
+      const files = Array.from(e.target.files || []);
+      const MAX = 5 * 1024 * 1024;
+      files.forEach(f => {
+        if (f.size > MAX) {
+          showToast(`${f.name} は 5MB を超えています`);
+          return;
+        }
+        pendingFiles.push(f);
+      });
+      e.target.value = '';
+      renderImageList();
+    });
+
+    // ---- フォーム送信（追加・更新） ----
+    document.getElementById('property-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const id = form.querySelector('[name="id"]').value;
+
+      const payload = {
+        title:            form.querySelector('[name="title"]').value,
+        property_type:    form.querySelector('[name="property_type"]').value,
+        area:             form.querySelector('[name="area"]').value,
+        address:          form.querySelector('[name="address"]').value || null,
+        nearest_station:  form.querySelector('[name="nearest_station"]').value || null,
+        access:           form.querySelector('[name="access"]').value || null,
+        price:            Number(form.querySelector('[name="price"]').value),
+        layout:           form.querySelector('[name="layout"]').value || null,
+        building_area:    form.querySelector('[name="building_area"]').value || null,
+        land_area:        form.querySelector('[name="land_area"]').value || null,
+        building_age:     form.querySelector('[name="building_age"]').value || null,
+        floor:            form.querySelector('[name="floor"]').value || null,
+        coverage_ratio:   form.querySelector('[name="coverage_ratio"]').value || null,
+        floor_area_ratio: form.querySelector('[name="floor_area_ratio"]').value || null,
+        description:      form.querySelector('[name="description"]').value || null,
+        is_published:     form.querySelector('[name="is_published"]').checked,
+      };
+
+      const saveBtn = document.getElementById('modal-save');
+      saveBtn.disabled = true;
+      saveBtn.textContent = '保存中...';
+
+      try {
+        let propertyId = id ? Number(id) : null;
+        if (id) {
+          const { error } = await sb.from('properties').update(payload).eq('id', id);
+          if (error) throw error;
+        } else {
+          const { data, error } = await sb.from('properties').insert(payload).select('id').single();
+          if (error) throw error;
+          propertyId = data.id;
+        }
+
+        // ---- 既存画像の削除 ----
+        if (deletedImageIds.length > 0) {
+          const targets = existingImages.filter(img => deletedImageIds.includes(img.id));
+          const paths = targets.map(img => urlToPath(img.image_url)).filter(Boolean);
+          if (paths.length > 0) {
+            const { error: rmErr } = await sb.storage.from(BUCKET).remove(paths);
+            if (rmErr) console.warn('Storage削除エラー:', rmErr);
+          }
+          const { error: dbDelErr } = await sb.from('property_images').delete().in('id', deletedImageIds);
+          if (dbDelErr) console.warn('property_images削除エラー:', dbDelErr);
+        }
+
+        // ---- 新規画像のアップロード ----
+        const remainingCount = existingImages.filter(img => !deletedImageIds.includes(img.id)).length;
+        for (let i = 0; i < pendingFiles.length; i++) {
+          const file = pendingFiles[i];
+          const path = `${propertyId}/${Date.now()}-${i}-${sanitizeName(file.name)}`;
+          const { error: upErr } = await sb.storage.from(BUCKET).upload(path, file, {
+            contentType: file.type || undefined,
+            upsert: false
+          });
+          if (upErr) {
+            showToast(`${file.name} のアップロードに失敗: ${upErr.message}`);
+            continue;
+          }
+          const { data: urlData } = sb.storage.from(BUCKET).getPublicUrl(path);
+          const publicUrl = urlData.publicUrl;
+          const { error: insErr } = await sb.from('property_images').insert({
+            property_id: propertyId,
+            image_url: publicUrl,
+            sort_order: remainingCount + i
+          });
+          if (insErr) {
+            showToast(`${file.name} のDB登録に失敗`);
+            // 失敗時はStorageからも消す
+            await sb.storage.from(BUCKET).remove([path]);
+          }
+        }
+
+        document.getElementById('edit-modal').classList.remove('is-active');
+        showToast(id ? '物件を更新しました' : '物件を追加しました');
+        loadProperties();
+      } catch (err) {
+        showToast('保存に失敗しました: ' + (err.message || err));
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = '保存する';
+      }
+    });
+
+    // ---- 削除モーダルを開く ----
+    window.openDelete = (id, name) => {
+      deleteTargetId = id;
+      document.getElementById('delete-name').textContent = `「${name}」を削除します。`;
+      document.getElementById('delete-modal').classList.add('is-active');
+    };
+
+    // ---- 削除実行 ----
+    document.getElementById('delete-confirm').addEventListener('click', async () => {
+      // 先に画像 URL を取得して Storage からも削除
+      const { data: imgs } = await sb
+        .from('property_images')
+        .select('image_url')
+        .eq('property_id', deleteTargetId);
+      if (imgs && imgs.length > 0) {
+        const paths = imgs.map(i => urlToPath(i.image_url)).filter(Boolean);
+        if (paths.length > 0) {
+          const { error: rmErr } = await sb.storage.from(BUCKET).remove(paths);
+          if (rmErr) console.warn('Storage削除エラー:', rmErr);
+        }
+      }
+      // properties 削除（property_images は ON DELETE CASCADE で自動削除）
+      const { error } = await sb.from('properties').delete().eq('id', deleteTargetId);
+      document.getElementById('delete-modal').classList.remove('is-active');
+      if (error) {
+        showToast('削除に失敗しました');
+      } else {
+        showToast('物件を削除しました');
+        loadProperties();
+      }
+    });
+
+    // ---- モーダルを閉じる ----
+    document.getElementById('modal-cancel').addEventListener('click',  () => document.getElementById('edit-modal').classList.remove('is-active'));
+    document.getElementById('delete-cancel').addEventListener('click', () => document.getElementById('delete-modal').classList.remove('is-active'));
+
+    // ---- ログアウト ----
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      await sb.auth.signOut();
+      location.href = 'index.html';
+    });
+
+    // ---- 初期化 ----
+    (async () => {
+      const ok = await checkAuth();
+      if (ok) loadProperties();
+    })();
+  </script>
+</body>
+</html>
