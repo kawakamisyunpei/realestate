@@ -146,10 +146,13 @@
     <div class="container">
       <h2 class="section-title" data-en="Free Assessment">無料査定を依頼する</h2>
       <p class="section-subtitle">以下のフォームからお気軽にお申し込みください</p>
-      <div class="contact-form">
+      <form class="contact-form" id="assessment-form" action="https://formsubmit.co/08eb751720bed483036f2099426067f1" method="POST">
+        <input type="hidden" name="_subject" value="【Deen不動産】無料査定の依頼">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="">
         <div class="contact-form__group">
           <label>物件種別 <span class="required">必須</span></label>
-          <select>
+          <select name="property_type" required>
             <option>一戸建て</option>
             <option>マンション</option>
             <option>土地</option>
@@ -158,36 +161,36 @@
         </div>
         <div class="contact-form__group">
           <label>物件所在地 <span class="required">必須</span></label>
-          <input type="text" placeholder="例: 岡山市北区○○町1-2-3">
+          <input type="text" name="address" placeholder="例: 岡山市北区○○町1-2-3" required>
         </div>
         <div class="contact-form__group">
           <label>土地面積（おおよそ）</label>
-          <input type="text" placeholder="例: 150m²">
+          <input type="text" name="land_area" placeholder="例: 150m²">
         </div>
         <div class="contact-form__group">
           <label>建物面積（おおよそ）</label>
-          <input type="text" placeholder="例: 100m²">
+          <input type="text" name="building_area" placeholder="例: 100m²">
         </div>
         <div class="contact-form__group">
           <label>お名前 <span class="required">必須</span></label>
-          <input type="text" placeholder="例: 山田 太郎">
+          <input type="text" name="name" placeholder="例: 山田 太郎" required>
         </div>
         <div class="contact-form__group">
           <label>電話番号 <span class="required">必須</span></label>
-          <input type="tel" placeholder="例: 090-1234-5678">
+          <input type="tel" name="phone" placeholder="例: 090-1234-5678" required>
         </div>
         <div class="contact-form__group">
           <label>メールアドレス</label>
-          <input type="email" placeholder="例: example@mail.com">
+          <input type="email" name="email" placeholder="例: example@mail.com">
         </div>
         <div class="contact-form__group">
           <label>備考・ご質問</label>
-          <textarea placeholder="売却時期のご希望や、気になっていることがあればご記入ください"></textarea>
+          <textarea name="message" placeholder="売却時期のご希望や、気になっていることがあればご記入ください"></textarea>
         </div>
         <div class="contact-form__actions">
-          <button class="btn btn--primary" style="padding: 14px 48px;">無料査定を依頼する</button>
+          <button type="submit" class="btn btn--primary" style="padding: 14px 48px;">無料査定を依頼する</button>
         </div>
-      </div>
+      </form>
     </div>
   </section>
 
@@ -226,6 +229,48 @@
     </div>
   </footer>
 
+  <!-- ========== 完了ポップアップ ========== -->
+  <div class="modal-overlay" id="completeModal">
+    <div class="modal">
+      <div class="modal__icon">&#10003;</div>
+      <h3 class="modal__title">送信が完了しました</h3>
+      <p class="modal__text">無料査定のご依頼ありがとうございます。<br>内容を確認のうえ、折り返しご連絡いたします。</p>
+      <button class="modal__close" id="modalClose">閉じる</button>
+    </div>
+  </div>
+
   <script src="js/main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('assessment-form');
+      var modal = document.getElementById('completeModal');
+      var closeBtn = document.getElementById('modalClose');
+      if (!form || !modal) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var formData = new FormData(form);
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        }).then(function() {
+          modal.classList.add('is-active');
+          form.reset();
+        }).catch(function() {
+          modal.classList.add('is-active');
+          form.reset();
+        });
+      });
+
+      closeBtn.addEventListener('click', function() {
+        modal.classList.remove('is-active');
+      });
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.classList.remove('is-active');
+      });
+    });
+  </script>
 </body>
 </html>
